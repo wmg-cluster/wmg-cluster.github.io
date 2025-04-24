@@ -11,3 +11,7 @@ make html
 ```
 
 编译结果在`build\html\index.html`。
+
+### 部署托管
+
+用 WMG 的 GitHub 账号登录 [ReadTheDocs](https://about.readthedocs.com/) 即可操作。
