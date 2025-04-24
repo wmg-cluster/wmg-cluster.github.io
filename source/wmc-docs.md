@@ -24,13 +24,30 @@
 
 - 登录节点： cluster.weiming.win （用于 SSH 连接）
 
+### 新账户首次登录
+
+- 首次登录时需要修改初始密码（注意输入一遍初始密码两遍新密码）：
+
+```bash
+You must change your password now and login again!
+Current Password: (输入初始密码)
+New password: (输入新密码)
+Retype new password: (再次输入新密码)
+```
+
+- 修改完成后重新登录，成功后即可得到命令提示符：
+
+```bash
+Welcome! This is the Computer Cluster of Weiming Lab.
+```
+
 ### 通过 SSH 连接登录节点
 
 用户在登录节点上使用 Slurm 命令行提交计算任务，另外也可以进行一些简单的数据处理操作。
 
 推荐使用 VS Code 插件 Remote-SSH 进行连接。config 文件示例：
 
-```ssh-config
+```
 Host wmg-cluster
     HostName 
     User YourAccount
