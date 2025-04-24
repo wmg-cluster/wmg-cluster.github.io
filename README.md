@@ -14,4 +14,5 @@ make html
 
 ### 部署托管
 
-用 WMG 的 GitHub 账号登录 [ReadTheDocs](https://about.readthedocs.com/) 即可操作。
+- 用 WMG 的 GitHub 账号登录 [ReadTheDocs](https://about.readthedocs.com/) 即可操作。
+- 部署完毕后在 [WMC User Guide](https://wmc-user-guide.readthedocs.io/) 即可查看。
