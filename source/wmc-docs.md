@@ -28,7 +28,15 @@
 
 用户在登录节点上使用 Slurm 命令行提交计算任务，另外也可以进行一些简单的数据处理操作。
 
+推荐使用 VS Code 插件 Remote-SSH 进行连接。config 文件示例：
 
+```ssh-config
+Host wmg-cluster
+    HostName 
+    User YourAccount
+    # 可以选择生成公私密钥对，将公钥添加到集群
+    IdentityFile /path/to/your/private/key
+```
 
 ## 1. Conda环境激活
 ```bash
