@@ -76,6 +76,10 @@ salloc --nodelist=wmc-slave-g12 -p gpu3 -N 1 -c 4 --mem 30G --gres gpu:1
 - 获得计算资源分配后，<strong style="color: red;">务必</strong>使用 `srun` 进行调试，否则任务会运行在登录节点上，可能导致集群崩溃。
 ```bash
 # 调试命令必须以 srun 开头，才能运行在分配的计算节点上
+# 未加 srun 仍是在登录节点执行命令
+hostname                      
+# 使用 srun 在计算节点执行命令
+srun hostname
 # 查看分配的 gpu 信息
 srun nvidia-smi
 # 运行 python 脚本
