@@ -43,19 +43,64 @@ Welcome! This is the Computer Cluster of Weiming Lab.
 
 ### 通过 SSH 连接登录节点
 
-用户在登录节点上使用 Slurm 命令行提交计算任务，另外也可以进行一些简单的数据处理操作。
+- 用户在登录节点上使用 Slurm 命令行提交计算任务，另外也可以进行一些简单的数据处理操作。
 
-推荐使用 VS Code 插件 Remote-SSH 进行连接。config 文件示例：
+- 推荐使用 VS Code 插件 Remote-SSH 进行连接。config 文件示例（将信息提示替换为对应内容即可使用）：
 
 ```
 Host wmg-cluster
-    HostName 
+    HostName ClusterAddress
     User YourAccount
-    # 可以选择生成公私密钥对，将公钥添加到集群
+    # 可以选择生成公私密钥对，将公钥添加到集群，如果使用密码登录可以将这条注释掉
     IdentityFile /path/to/your/private/key
 ```
 
-## 1. Conda环境激活
+- Windows/Linux 公私密钥对生成及使用请自行查找相关资料或借助 GPT 生成相关命令。
+
+## 代码调试
+
+- 用户需要通过 `salloc` 命令申请资源后，使用 `srun` 运行调试任务。
+- `salloc` 命令示例如下：
+```bash
+# 使用 Slurm 分配交互式计算资源：
+#   --nodelist=wmc-slave-g12  # [可选] 强制指定节点名称，若省略则由系统自动分配
+#   -p gpu3                   # 提交到 gpu3 分区（通常为 GPU 节点专用队列）
+#   -N 1                      # 分配 1 个计算节点
+#   -c 4                      # 每任务占用 4 个 CPU 核心
+#   --mem 30G                 # 分配 30GB 内存
+#   --gres gpu:1              # 分配 1 块目标 GPU
+salloc --nodelist=wmc-slave-g12 -p gpu3 -N 1 -c 4 --mem 30G --gres gpu:1
+```
+- 获得计算资源分配后，<strong style="color: red;">务必</strong>使用 `srun` 进行调试，否则任务会运行在登录节点上，可能导致集群崩溃。
+```bash
+# 调试命令必须以 srun 开头，才能运行在分配的计算节点上
+# 查看分配的 gpu 信息
+srun nvidia-smi
+# 运行 python 脚本
+srun python debug.py
+```
+- **推荐**在已分配的 Slurm 计算节点上，直接启动一个交互式 Bash Shell ，这样在后续调试中可以不用 `srun` 命令，防止不小心忘记。
+```bash
+# 分配临时节点启动交互式 Bash
+srun --pty bash
+# 进入交互式环境后可自由执行命令，不需要再使用 srun
+nvidia-smi
+python debug.py
+# 退出交互式环境
+exit
+```
+
+- 结束调试后，需要释放分配的计算资源，这里的 `exit` 命令和退出交互式环境的命令是分开的。
+```bash
+# 释放分配的计算资源
+exit
+```
+## CUDA 版本问题
+
+- 集群提供多个 CUDA 版本，存放在 `/app/cuda` 路径下。
+ TBD
+
+## TBD
 ```bash
 source ~/miniconda3/bin/activate
 # 申请1个节点（wmc-slave-g12），4核CPU，30G内存，1块GPU
