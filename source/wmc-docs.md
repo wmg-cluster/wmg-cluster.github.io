@@ -138,7 +138,7 @@ nvcc --version       # 确认版本是否正确
 
 ### 编写/提交任务脚本
 
-任务脚本用于描述 Slurm 计算任务。下面是一个简单的例子，这个脚本打印了一行文字、执行了一个 python 脚本、最后又打印了一行文字。
+- 任务脚本用于描述 Slurm 计算任务。下面是一个简单的例子，这个脚本打印了一行文字、执行了一个 python 脚本、最后又打印了一行文字。
 
 - 文件：test_sbatch.sh
 
@@ -149,7 +149,7 @@ nvcc --version       # 确认版本是否正确
 #SBATCH -c 1                # 申请 CPU 核心：1个
 #SBATCH --mem 500           # 申请内存：500 MB
 #SBATCH --gres gpu:1        # 分配1个GPU（纯 CPU 任务不用写）
-#SBATCH -o test_sbatch.log  # 输出 log 文件
+#SBATCH -o test-%j.log      # 输出 log 文件，%j会被自动替换为任务的ID（JobID）​
 
 echo "job begin"
 python3 my_script.py  # my_script.py 是用户的 python 程序
@@ -162,18 +162,55 @@ echo "job end"
 
 写好任务脚本后，使用 `sbatch` 命令向集群提交计算任务。若提交成功，`sbatch` 会输出任务编号，该任务会进入队列，请求的资源可用后就会执行。
 
-```
-$ sbatch test_sbatch.sh
-Submitted batch job 114
+```bash
+# 这里也可以用 --nodelist 参数指定节点
+sbatch test_sbatch.sh
 ```
 
 ### 监控任务状态
 
-- TODO
+- 用 `squeue` 命令查看当前正在运行或排队等待的计算任务。默认情况下，`squeue` 的输出包含以下列：
+```bash
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON) 
+```
+- 输出解析
+
+| 字段名            | 说明                                                                 |
+|-------------------|----------------------------------------------------------------------|
+| ​**JOBID**​         | 任务的唯一标识符                                                     |
+| ​**PARTITION**​     | 任务所在的队列/分区名称                                              |
+| ​**NAME**​          | 任务名称（通常为提交脚本的名称）                                     |
+| ​**USER**​          | 提交任务的用户名                                                     |
+| ​**ST**​            | 任务状态代码（如 `PD`、`R`、`CG` 等）                               |
+| ​**TIME**​          | 任务已运行时间（格式为 `天数-小时:分钟:秒`，如 `2-13:45:30`）        |
+| ​**NODES**​         | 任务使用的节点数量                                                   |
+| ​**NODELIST(REASON)​**​ | 分配的节点列表（如已运行）或未运行的原因（如 `Resources`、`Priority`） |
+
+- 常见任务状态
+
+| 代码 | 全称      | 说明                          |
+|------|-----------|-------------------------------|
+| `PD` | PENDING   | 作业正在排队等待资源         |
+| `R`  | RUNNING   | 作业正在运行中               |
+| `CG` | COMPLETING| 作业正在收尾（即将完成）      |
+| `CD` | COMPLETED | 作业已成功完成               |
+| `F`  | FAILED    | 作业因错误失败               |
+| `TO` | TIMEOUT   | 作业因超时被终止             |
+
+- 任务执行完毕后会很快从队列中移除，这时 `squeue` 就看不到任务信息了。这时可以通过 `sacct` 查阅任务的审计信息。
+
+```bash
+# 根据需要选择参数
+sacct -j <jobid> -u <username>
+```
 
 ### 取消任务
 
-- TODO
+- 使用 `scancel` 取消正在等待或者执行中的任务。任务将会从任务队列中消失。
+
+```bash
+scancel <JOB_ID>
+```
 
 ## 文件传输&管理
 
