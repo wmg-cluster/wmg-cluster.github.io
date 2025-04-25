@@ -30,6 +30,18 @@ WMC User Guide
    `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
    documentation for details.
 
+.. admonition:: 重要提示
+   :class: important
+
+   .. 严禁在登录节点上直接运行计算任务！！！
+
+   .. raw:: html
+
+      <div style="margin: 1em 0"></div>
+      <span style="color:red; font-weight:bold">严禁</span>在登录节点上直接运行计算任务！！！
+      <div style="margin: 1em 0"></div>
+      <span style="color:red; font-weight:bold">务必</span>记得使用 srun 命令或者通过 srun --pty bash 启动交互式 Bash 环境！！！
+      <div style="margin: 1em 0"></div>
 
 .. toctree::
    :maxdepth: 3
