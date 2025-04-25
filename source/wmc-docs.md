@@ -58,6 +58,10 @@ Host wmg-cluster
 
 - Windows/Linux 公私密钥对生成及使用请自行查找相关资料或借助 GPT 生成相关命令。
 
+## 查看节点&任务状态
+
+### TODO
+
 ## 代码调试
 
 ### 计算资源申请&任务调试
@@ -140,15 +144,15 @@ nvcc --version       # 确认版本是否正确
 
 ```bash
 #!/bin/bash
-#SBATCH -p gpu1       # 在 gpu1 分区运行（不写默认为 cpu1）
-#SBATCH -N 1          # 只在一个节点上运行任务
-#SBATCH -c 1          # 申请 CPU 核心：1个
-#SBATCH --mem 500     # 申请内存：500 MB
-#SBATCH --gres gpu:1  # 分配1个GPU（纯 CPU 任务不用写）
-#SBATCH -o /public/ziyuanfang/aigc_detect/SAFE/my_logs/bsl_v2.1.log # 注意可以修改"slurm"为与任务相关的内容方便以后查询实验结果
+#SBATCH -p gpu1             # 在 gpu1 分区运行（不写默认为 cpu1）
+#SBATCH -N 1                # 只在一个节点上运行任务
+#SBATCH -c 1                # 申请 CPU 核心：1个
+#SBATCH --mem 500           # 申请内存：500 MB
+#SBATCH --gres gpu:1        # 分配1个GPU（纯 CPU 任务不用写）
+#SBATCH -o test_sbatch.log  # 输出 log 文件
 
 echo "job begin"
-python3 my_script.py  # my_script.py 是用户上传的 python 程序
+python3 my_script.py  # my_script.py 是用户的 python 程序
 echo "job end"
 ```
 
@@ -162,3 +166,20 @@ echo "job end"
 $ sbatch test_sbatch.sh
 Submitted batch job 114
 ```
+
+### 监控任务状态
+
+- TODO
+
+### 取消任务
+
+- TODO
+
+## 文件传输&管理
+
+### TODO
+
+## 便捷脚本工具
+
+### TODO
+
