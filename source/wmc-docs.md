@@ -123,7 +123,7 @@ exit
 - 可以使用以下命令查看版本，如果驱动支持 CUDA 版本过低，请联系管理员更新 GPU 节点驱动。
 
 ```bash
-# 驱动支持的最高 CUDA 版本​（不一定是实际安装版本）
+# 驱动支持的最高 CUDA 版本（不一定是实际安装版本）
 nvidia-smi
 # 当前实际安装的 CUDA Toolkit 版本
 nvcc --version
@@ -159,7 +159,7 @@ nvcc --version       # 确认版本是否正确
 #SBATCH -c 1                # 申请 CPU 核心：1个
 #SBATCH --mem 500           # 申请内存：500 MB
 #SBATCH --gres gpu:1        # 分配1个GPU（纯 CPU 任务不用写）
-#SBATCH -o test-%j.log      # 输出 log 文件，%j会被自动替换为任务的ID（JobID）​
+#SBATCH -o test-%j.log      # 输出 log 文件，%j会被自动替换为任务的ID（JobID）
 
 echo "job begin"
 python3 my_script.py  # my_script.py 是用户的 python 程序
@@ -195,15 +195,15 @@ squeue -o "%.10i %.9P %.50j %.14u %.12T %.14M %.18R %.6C %.14b"
 
 | 字段名            | 说明                                                                 |
 |-------------------|----------------------------------------------------------------------|
-| ​**JOBID**​         | 任务的唯一标识符                                                     |
-| ​**PARTITION**​     | 任务所在的队列/分区名称                                              |
-| ​**NAME**​          | 任务名称（通常为提交脚本的名称）                                     |
-| ​**USER**​          | 提交任务的用户名                                                     |
-| ​**ST(STATE)​**​     | 任务状态代码（如 `PD`、`R`、`CG` 等）                               |
-| ​**TIME**​          | 任务已运行时间（格式为 `天数-小时:分钟:秒`，如 `2-13:45:30`）        |
-| ​**NODES**​         | 任务使用的节点数量                                                   |
-| ​**NODELIST(REASON)​**​ | 分配的节点列表（如已运行）或未运行的原因（如 `Resources`、`Priority`） |
-| **​TRES_PER_NODE** | ​每节点可跟踪资源​（Trackable RESources per Node），通常为任务分配的 GPU 数目|
+| **JOBID**         | 任务的唯一标识符                                                     |
+| **PARTITION**     | 任务所在的队列/分区名称                                              |
+| **NAME**          | 任务名称（通常为提交脚本的名称）                                     |
+| **USER**          | 提交任务的用户名                                                     |
+| **ST(STATE)**     | 任务状态代码（如 `PD`、`R`、`CG` 等）                               |
+| **TIME**          | 任务已运行时间（格式为 `天数-小时:分钟:秒`，如 `2-13:45:30`）        |
+| **NODES**         | 任务使用的节点数量                                                   |
+| **NODELIST(REASON)** | 分配的节点列表（如已运行）或未运行的原因（如 `Resources`、`Priority`） |
+| **TRES_PER_NODE** | 每节点可跟踪资源（Trackable RESources per Node），通常为任务分配的 GPU 数目|
 
 - 常见任务状态
 
