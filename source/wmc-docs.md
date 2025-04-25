@@ -14,15 +14,16 @@
 
 ### 重要注意事项
 
-- <strong style="color: red;">严禁</strong>在登录节点上直接运行计算任务！！！后果包括但不限于**集群登录节点过载，导致用户集体掉线**。
+- <strong style="color: red;">严禁</strong>在登录节点上直接运行计算任务！！！后果包括但不限于<strong style="color: red;">集群登录节点过载，导致用户集体掉线</strong>。
+- <strong style="color: red;">务必</strong>记得使用 `srun` 命令或者通过 `srun --pty bash` 启动交互式 Bash 环境！！！
 
 ## 登录集群
 
 ### 集群账户
 
-需要使用集群的老师和同学请联系管理员开通账户。每个集群用户使用独立的 Linux 账户登录和提交任务。为保证服务器安全，普通用户不提供 root 权限。
+- 需要使用集群的老师和同学请联系管理员开通账户。每个集群用户使用独立的 Linux 账户登录和提交任务。为保证服务器安全，普通用户不提供 root 权限。
 
-- 登录节点： cluster.weiming.win （用于 SSH 连接）
+- 默认登录节点：wmc-slave-g6（用于 SSH 连接）
 
 ### 新账户首次登录
 
@@ -83,7 +84,7 @@ srun hostname
 # 查看分配的 gpu 信息
 srun nvidia-smi
 # 运行 python 脚本
-srun python debug.py
+srun python your_script.py
 ```
 - **推荐**在已分配的 Slurm 计算节点上，直接启动一个交互式 Bash Shell ，这样在后续调试中可以不用 `srun` 命令，防止不小心忘记。
 ```bash
@@ -103,6 +104,17 @@ exit
 ```
 ## CUDA 版本问题
 
+### 查看当前版本
+
+- 可以使用以下命令查看版本，如果驱动支持 CUDA 版本过低，请联系管理员更新 GPU 节点驱动。
+
+```bash
+# 驱动支持的最高 CUDA 版本​（不一定是实际安装版本）
+nvidia-smi
+# 当前实际安装的 CUDA Toolkit 版本
+nvcc --version
+```
+
 ### 更改使用的 CUDA 版本
 
 - 集群提供多个 CUDA 版本，存放在 `/app/cuda` 路径下，用户可以查看并选择合适的版本。
@@ -117,27 +129,6 @@ echo $CUDA_HOME      # 应输出 /app/cuda/cuda-11.8
 which nvcc           # 应显示 /app/cuda/cuda-11.8/bin/nvcc
 nvcc --version       # 确认版本是否正确
 ```
-
-## TBD
-```bash
-source ~/miniconda3/bin/activate
-# 申请1个节点（wmc-slave-g12），4核CPU，30G内存，1块GPU
-salloc --nodelist=wmc-slave-g12 -p gpu3 -N 1 -c 4 --mem 30G --gres gpu:1
-
-# 调试完成后释放资源
-exit
-
-srun python your_script.py
-
-srun --pty bash
-# 进入交互式环境后可自由执行命令
-python your_script.py
-```
-
-##  重要注意事项
-
-1. **禁止**在登录节点上直接运行计算任务
-2. 必须通过`salloc`申请资源后使用`srun`运行任务
 
 ## 计算任务管理
 
