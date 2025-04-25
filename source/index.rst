@@ -31,9 +31,7 @@ WMC User Guide
    documentation for details.
 
 .. admonition:: 重要提示
-   :class: important
-
-   .. 严禁在登录节点上直接运行计算任务！！！
+   :class: danger
 
    .. raw:: html
 
