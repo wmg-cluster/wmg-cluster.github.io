@@ -49,6 +49,7 @@ WMC User Guide
 
    wmc-docs.md
    job_scripts.md
+   handy_script_utilities.md
 
 ..  Indices and tables
 ..  ==================

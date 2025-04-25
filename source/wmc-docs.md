@@ -156,7 +156,7 @@ python3 my_script.py  # my_script.py 是用户的 python 程序
 echo "job end"
 ```
 
-- 这个任务脚本实际上就是个 bash 脚本。Slurm 读取以 `#SBATCH` 起始的行，这些行在 bash 语法里是注释，因此 bash 不会理会。[集群任务脚本示例](./job_scripts.md) 中提供了更多示例。
+- 这个任务脚本实际上就是个 bash 脚本。Slurm 读取以 `#SBATCH` 起始的行，这些行在 bash 语法里是注释，因此 bash 不会理会。[集群任务脚本](./job_scripts.md) 中提供了更多示例。
 
 - 写好任务脚本后，使用 `sbatch` 命令向集群提交计算任务。若提交成功，`sbatch` 会输出任务编号，该任务会进入队列，请求的资源可用后就会执行。
 
@@ -216,5 +216,7 @@ scancel <JOB_ID>
 
 ## 便捷脚本工具
 
-### TODO
+### 任务信息邮件通知脚本
+
+- [更多](./handy_script_utilities.md)
 
