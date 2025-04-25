@@ -17,6 +17,16 @@
 - <strong style="color: red;">严禁</strong>在登录节点上直接运行计算任务！！！后果包括但不限于<strong style="color: red;">集群登录节点过载，导致用户集体掉线</strong>。
 - <strong style="color: red;">务必</strong>记得使用 `srun` 命令或者通过 `srun --pty bash` 启动交互式 Bash 环境！！！
 
+## 集群硬件配置
+
+### 计算节点
+
+- TODO
+
+### 存储节点
+
+- TODO
+
 ## 登录集群
 
 ### 集群账户
@@ -168,9 +178,19 @@ sbatch test_sbatch.sh
 ### 监控任务状态
 
 - 用 `squeue` 命令查看当前正在运行或排队等待的计算任务。默认情况下，`squeue` 的输出包含以下列：
+
 ```bash
 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON) 
 ```
+
+- `squeue` 命令也支持通过 `-o` 参数自定义格式，示例如下。每个 %.Nx 表示一个字段，其中： N 是字段的固定宽度（字符数），不足时填充空格，超过时截断。 x 是字段类型标识符。
+  
+```bash
+squeue -o "%.10i %.9P %.50j %.14u %.12T %.14M %.18R %.6C %.14b"
+# 输出格式示例
+     JOBID PARTITION                                               NAME           USER        STATE           TIME   NODELIST(REASON)   CPUS  TRES_PER_NODE
+```
+
 - 输出解析
 
 | 字段名            | 说明                                                                 |
@@ -179,10 +199,11 @@ JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 | ​**PARTITION**​     | 任务所在的队列/分区名称                                              |
 | ​**NAME**​          | 任务名称（通常为提交脚本的名称）                                     |
 | ​**USER**​          | 提交任务的用户名                                                     |
-| ​**ST**​            | 任务状态代码（如 `PD`、`R`、`CG` 等）                               |
+| ​**ST(STATE)​**​     | 任务状态代码（如 `PD`、`R`、`CG` 等）                               |
 | ​**TIME**​          | 任务已运行时间（格式为 `天数-小时:分钟:秒`，如 `2-13:45:30`）        |
 | ​**NODES**​         | 任务使用的节点数量                                                   |
 | ​**NODELIST(REASON)​**​ | 分配的节点列表（如已运行）或未运行的原因（如 `Resources`、`Priority`） |
+| **​TRES_PER_NODE** | ​每节点可跟踪资源​（Trackable RESources per Node），通常为任务分配的 GPU 数目|
 
 - 常见任务状态
 
