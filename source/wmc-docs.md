@@ -19,13 +19,30 @@
 
 ## 集群硬件配置
 
-### 计算节点
+### 集群节点清单
 
-- TODO
-
-### 存储节点
-
-- TODO
+- 集群目前由登录节点、存储节点和计算节点组成，登录节点只负责 SLURM 控制/登录功能，<strong style="color: red;">严禁</strong>在登录节点上运行计算任务。
+  
+| 节点名               | 型号/配置                      | 负责功能             |
+|----------------------|-------------------------------|----------------------|
+| wmc-slave-g6         | AMAX SYS-4029GP-TRT 1080Ti*8  |SLURM 控制/登录       |
+| wmc-slave-g7         | AMAX SYS-4029GP-TRT 1080Ti*8  | 计算                 |
+| wmc-slave-g8         | 思腾合力 2080Ti*8              | 计算                 |
+| wmc-slave-g9         | 思腾合力 2080Ti*8              | 计算                 |
+| wmc-slave-g10        | 2080Ti*8                      | 计算                 |
+| wmc-slave-g11        | 2080Ti*8                      | 计算                 |
+| wmc-slave-g12        | 2080Ti*8                      | 计算                 |
+| wmc-slave-g13        | 2080Ti*8                      | 退役                 |
+| wmc-slave-g14        | 2080Ti*10                     | 计算                 |
+| wmc-slave-g15        | 2080Ti*10                     | 计算                 |
+| wmc-argon            | 存储服务器                     | 存储/域控            |
+| wmc-slave-g16        | Amax 3090*10                  | 计算                 |
+| wmc-slave-g17        | Amax 3090*10                  | 计算                 |
+| wmc-helium           | 存储服务器                     | 存储                 |
+| wmc-slave-g18        | 思腾合力 A6000*10              | 计算                 |
+| wmc-slave-g19        | 思腾合力 A6000*10              | 计算                 |
+| wmc-slave-g20        | 思腾合力 A6000*10              | 计算                 |
+| wmc-krypton          | 思腾合力存储服务器             | 存储                 |
 
 ## 登录集群
 
