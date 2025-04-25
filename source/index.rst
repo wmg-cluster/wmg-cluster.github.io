@@ -48,6 +48,7 @@ WMC User Guide
    :caption: 目录
 
    wmc-docs.md
+   job_scripts.md
 
 ..  Indices and tables
 ..  ==================

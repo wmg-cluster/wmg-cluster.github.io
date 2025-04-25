@@ -58,7 +58,7 @@ Host wmg-cluster
 
 - Windows/Linux 公私密钥对生成及使用请自行查找相关资料或借助 GPT 生成相关命令。
 
-## 查看节点&任务状态
+## 查看集群/节点状态
 
 ### TODO
 
@@ -156,11 +156,9 @@ python3 my_script.py  # my_script.py 是用户的 python 程序
 echo "job end"
 ```
 
-这个任务脚本实际上就是个 bash 脚本。Slurm 读取以 `#SBATCH` 起始的行，这些行在 bash 语法里是注释，因此 bash 不会理会。
+- 这个任务脚本实际上就是个 bash 脚本。Slurm 读取以 `#SBATCH` 起始的行，这些行在 bash 语法里是注释，因此 bash 不会理会。[集群任务脚本示例](./job_scripts.md) 中提供了更多示例。
 
-[集群:任务脚本示例](https://wmg.ustc.edu.cn/wiki/index.php/集群:任务脚本示例) 中提供了更多示例。
-
-写好任务脚本后，使用 `sbatch` 命令向集群提交计算任务。若提交成功，`sbatch` 会输出任务编号，该任务会进入队列，请求的资源可用后就会执行。
+- 写好任务脚本后，使用 `sbatch` 命令向集群提交计算任务。若提交成功，`sbatch` 会输出任务编号，该任务会进入队列，请求的资源可用后就会执行。
 
 ```bash
 # 这里也可以用 --nodelist 参数指定节点
