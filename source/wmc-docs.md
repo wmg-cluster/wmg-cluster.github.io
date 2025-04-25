@@ -103,8 +103,20 @@ exit
 ```
 ## CUDA 版本问题
 
-- 集群提供多个 CUDA 版本，存放在 `/app/cuda` 路径下。
- TBD
+### 更改使用的 CUDA 版本
+
+- 集群提供多个 CUDA 版本，存放在 `/app/cuda` 路径下，用户可以查看并选择合适的版本。
+- 用户可以通过修改环境变量指定 CUDA 版本：
+```bash
+# 临时修改环境变量（仅当前终端生效）
+export CUDA_HOME=/app/cuda/cuda-11.8
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+# 验证环境变量
+echo $CUDA_HOME      # 应输出 /app/cuda/cuda-11.8
+which nvcc           # 应显示 /app/cuda/cuda-11.8/bin/nvcc
+nvcc --version       # 确认版本是否正确
+```
 
 ## TBD
 ```bash
