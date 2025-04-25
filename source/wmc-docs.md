@@ -59,6 +59,8 @@ Host wmg-cluster
 
 ## 代码调试
 
+### 计算资源申请&任务调试
+
 - 用户需要通过 `salloc` 命令申请资源后，使用 `srun` 运行调试任务。
 - `salloc` 命令示例如下：
 ```bash
