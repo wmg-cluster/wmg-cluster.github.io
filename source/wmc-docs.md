@@ -329,6 +329,17 @@ scp username@remote_host:/remote/path/file.txt /local/path/
 
 ### TODO
 
+## 在集群上使用vs code远程debug
+- 首先，安装vs code的ssh remote插件(自行百度)
+- `pip install ptvsd`，将以下代码加到需要调试的代码前面
+```
+import ptvsd
+ptvsd.enable_attach(address = ('0.0.0.0', 3000))
+ptvsd.wait_for_attach()
+```
+- 在服务器上申请资源，srun运行python文件 (参考前面salloc章节)
+- 在vs code 左边上点击“运行和调试”按钮，点击Python Debugger旁边的齿轮，选择Python Debugger，点击“远程附加”， 先后输入 wmc-slave-gX(X为申请的节点) 3000。之后选择调试，此时，在代码上可以直接添加断点，中间变量可以在左上角实时看到。
+- 在调试完之后，<strong style="color: red;">记得释放申请的资源</strong>！
 ## 便捷脚本工具
 
 ### 任务信息邮件通知脚本
