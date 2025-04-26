@@ -217,6 +217,8 @@ nvcc --version       # 确认版本是否正确
 
 ## 计算任务管理
 
+> 本章仅介绍基础的任务脚本编写、提交、监控和取消，更多详细内容以及 Q&A 参见[集群任务脚本](./job_scripts.md)。
+
 ### 编写/提交任务脚本 <a id="hyperlink1"></a>
 
 - 任务脚本用于描述 Slurm 计算任务。下面是一个简单的例子，这个脚本打印了一行文字、执行了一个 python 脚本、最后又打印了一行文字。
@@ -274,6 +276,7 @@ squeue -o "%.10i %.9P %.50j %.14u %.12T %.14M %.18R %.6C %.14b"
 | **TIME**          | 任务已运行时间（格式为 `天数-小时:分钟:秒`，如 `2-13:45:30`）        |
 | **NODES**         | 任务使用的节点数量                                                   |
 | **NODELIST(REASON)** | 分配的节点列表（如已运行）或未运行的原因（如 `Resources`、`Priority`） |
+| **CPUS**          |​	任务分配的 CPU 核心数量                                            |
 | **TRES_PER_NODE** | 每节点可跟踪资源（Trackable RESources per Node），通常为任务分配的 GPU 数目|
 
 - 常见任务状态
@@ -304,11 +307,31 @@ scancel <JOB_ID>
 
 ## 文件传输&管理
 
+>  VS Code 支持 Windows 图形化界面的文件拖曳操作，但不显示传输速度和进度等相关信息，因此我们在这里提供一些其他的文件传输&管理工具。
+
+### 使用 SCP 进行文件传输
+
+- SCP​（Secure Copy Protocol）是一个基于 ​SSH（Secure Shell）​​的安全文件传输协议，用于在本地主机和远程主机之间（或两台远程主机之间）​加密传输文件或目录。
+- 正常 Linux 系统都原生支持 SCP 协议；Windows 系统则取决于当前是否已安装 OpenSSH 客户端，而 Windows 10 在 2018 年 4 月更新（版本 1803）中默认安装了 OpenSSH 客户端，只要你的电脑不是古董，大概率可以直接使用。
+
+- 用法示例
+```bash
+# ​从本地复制到远程
+scp /local/path/file.txt username@remote_host:/remote/path/
+# 复制整个目录（递归）
+scp -r /local/dir username@remote_host:/remote/path/
+# 从远程复制到本地
+scp username@remote_host:/remote/path/file.txt /local/path/
+```
+
+- Linux 和 OpenSSH 客户端还支持 SFTP（SSH File Transfer Protocol）协议，提供多功能文件管理，支持断点续传，但比 SCP 稍慢一些，有需要的用户可以自行查阅相关使用方法。
+- 如需图形化操作，推荐使用 ​WinSCP​（同时支持SCP和SFTP）。
+
 ### TODO
 
 ## 便捷脚本工具
 
 ### 任务信息邮件通知脚本
 
-- [更多](./handy_script_utilities.md)
+- [TODO](./handy_script_utilities.md)
 
