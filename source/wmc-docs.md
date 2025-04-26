@@ -36,8 +36,8 @@
 | wmc-slave-g14        | 2080Ti*10                     | 计算                 |
 | wmc-slave-g15        | 2080Ti*10                     | 计算                 |
 | wmc-argon            | 存储服务器                     | 存储/域控            |
-| wmc-slave-g16        | Amax 3090*10                  | 计算                 |
-| wmc-slave-g17        | Amax 3090*10                  | 计算                 |
+| wmc-slave-g16        | Amax 3090*10                  | 计算（长期下线，待处理）|
+| wmc-slave-g17        | Amax 3090*10                  | 计算（长期下线，待处理）|
 | wmc-helium           | 存储服务器                     | 存储                 |
 | wmc-slave-g18        | 思腾合力 A6000*10              | 计算                 |
 | wmc-slave-g19        | 思腾合力 A6000*10              | 计算                 |
@@ -87,6 +87,8 @@ Host wmg-cluster
 
 ## 查看集群/节点状态
 
+### 查看集群状态
+
 - 在登陆节点上，使用 Slurm 提供的命令可以查看集群的各项状态。
 - `sinfo` 命令可以看到哪些分区/计算节点是空闲的（idle）、分配了一部分资源（mix）或者完全占满了（alloc），输出示例如下：
 ```
@@ -104,6 +106,9 @@ gpu3         up   infinite      4   idle wmc-slave-g[9-11,15]
 gpu4         up   infinite      2  drain wmc-slave-g[16-17]
 gpu5         up   infinite      3    mix wmc-slave-g[18-20]
 ```
+
+### 查看节点状态
+
 - `scontrol` 命令则可展示更详细的信息。`scontrol show node 具体节点` 查询节点信息、`scontrol show partition` 查询分区信息。
 - 例如 `scontrol show node wmc-slave-g20`，得到输出如下：
 ```
