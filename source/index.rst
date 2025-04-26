@@ -48,6 +48,7 @@
    wmc-docs.md
    job_scripts.md
    handy_script_utilities.md
+   FAQs.md
 
 ..  Indices and tables
 ..  ==================

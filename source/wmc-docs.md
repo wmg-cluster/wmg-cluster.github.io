@@ -132,9 +132,9 @@ NodeName=wmc-slave-g20 Arch=x86_64 CoresPerSocket=24
 - `wmc-mon` 工具可以查看特定计算节点上的 CPU、内存以及 GPU 使用信息。
 - `wmc-mon cpu wmc-slave-g20` : 查看 g20 节点上的所有进程信息（主要是 CPU、内存，输出同 top 命令）
 - `wmc-mon gpu wmc-slave-g20` : 查看 g20 节点上GPU 的使用情况（输出同 nvidia-smi 命令）
-## 调试节点申请&使用
+## 调试节点申请&远程 debug
 
-### 计算资源申请&任务调试
+### 计算资源申请&使用
 
 - 用户需要通过 `salloc` 命令申请资源后，使用 `srun` 运行调试任务。
 - `salloc` 命令示例如下：
@@ -148,7 +148,7 @@ NodeName=wmc-slave-g20 Arch=x86_64 CoresPerSocket=24
 #   --gres gpu:1              # 分配 1 块目标 GPU
 salloc --nodelist=wmc-slave-g12 -p gpu3 -N 1 -c 4 --mem 30G --gres gpu:1
 ```
-- 获得计算资源分配后，<strong style="color: red;">务必</strong>使用 `srun` 进行调试，否则任务会运行在登录节点上，可能导致集群崩溃。
+- 获得计算资源分配后，<strong style="color: red;">务必</strong>使用 `srun` 进行调试，否则<strong style="color: red;">任务会运行在登录节点上，可能导致集群崩溃</strong>。
 ```bash
 # 调试命令必须以 srun 开头，才能运行在分配的计算节点上
 # 未加 srun 仍是在登录节点执行命令
@@ -171,11 +171,23 @@ python debug.py
 exit
 ```
 
-- 结束调试后，需要释放分配的计算资源，这里的 `exit` 命令和退出交互式环境的命令是分开的。
+- 结束调试后，<strong style="color: red;">务必</strong>记得释放分配的计算资源，这里的 `exit` 命令和退出交互式环境的命令是分开的。
 ```bash
 # 释放分配的计算资源
 exit
 ```
+
+### 在集群上使用 VS Code 远程 debug
+- 首先，需要安装 VS Code 的 Remote-SSH 插件。
+- `pip install ptvsd`，将以下代码加到需要调试的代码前面：
+```python
+import ptvsd
+ptvsd.enable_attach(address = ('0.0.0.0', 3000))
+ptvsd.wait_for_attach()
+```
+- 在服务器上申请资源，`srun` 运行 python 文件。
+- 在 VS Code 左侧点击“运行和调试”的图标（或 `Ctrl+Shift+D` ），点击“运行和调试”按钮（没有的话点击 Python Debugger 旁边的齿轮），调试器选择 Python Debugger ，调试配置选择“远程附加”， 主机名填 `wmc-slave-gX` （X为申请的调试节点），端口号填 3000 ，之后选择调试。此时，在代码上可以直接添加断点，中间变量可以在左侧实时看到。这个过程实际上是在创建一个 json 文件作为远程调试的配置。
+- 在调试完之后，<strong style="color: red;">务必</strong>记得释放申请的资源！
 
 ## 环境搭建
 
@@ -337,17 +349,6 @@ scp username@remote_host:/remote/path/file.txt /local/path/
 
 ### TODO
 
-## 在集群上使用vs code远程debug
-- 首先，安装vs code的ssh remote插件(自行百度)
-- `pip install ptvsd`，将以下代码加到需要调试的代码前面
-```
-import ptvsd
-ptvsd.enable_attach(address = ('0.0.0.0', 3000))
-ptvsd.wait_for_attach()
-```
-- 在服务器上申请资源，srun运行python文件 (参考前面salloc章节)
-- 在vs code 左边上点击“运行和调试”按钮，点击Python Debugger旁边的齿轮，选择Python Debugger，点击“远程附加”， 先后输入 wmc-slave-gX(X为申请的节点) 3000。之后选择调试，此时，在代码上可以直接添加断点，中间变量可以在左上角实时看到。
-- 在调试完之后，<strong style="color: red;">记得释放申请的资源</strong>！
 ## 便捷脚本工具
 
 ### 任务信息邮件通知脚本
