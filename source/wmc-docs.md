@@ -124,18 +124,9 @@ NodeName=wmc-slave-g20 Arch=x86_64 CoresPerSocket=24
    CurrentWatts=0 AveWatts=0
    ExtSensorsJoules=n/s ExtSensorsWatts=0 ExtSensorsTemp=n/s
 ```
-- `squeue` 命令查看当前正在运行或排队等待的计算任务。由于一般任务很多，squeue展示的结果比较扎眼睛，推荐用 `squeue | grep 用于定位的信息（user id之类的）` 来方便查询
-- `squeue | grep wangguan` 输出如下：
-```
-247888      gpu3 fwm_rgb_ wangguan  R 4-22:11:00      1 wmc-slave-g14
-248322      gpu5 ucnext_r wangguan  R 2-20:16:30      1 wmc-slave-g18
-248335      gpu3 fwm_rgb_ wangguan  R 2-18:55:21      1 wmc-slave-g14
-248342      gpu3 fwm_rgb_ wangguan  R 2-17:22:37      1 wmc-slave-g14
-```
 - `wmc-mon` 工具可以查看特定计算节点上的 CPU、内存以及 GPU 使用信息。
 - `wmc-mon cpu wmc-slave-g20` : 查看 g20 节点上的所有进程信息（主要是 CPU、内存，输出同 top 命令）
 - `wmc-mon gpu wmc-slave-g20` : 查看 g20 节点上GPU 的使用情况（输出同 nvidia-smi 命令）
-- 任务执行完毕后会很快从队列中移除，这时 `squeue` 就看不到任务信息了。这时可以通过 `sacct` 查阅任务的审计信息。
 ## 调试节点申请&使用
 
 ### 计算资源申请&任务调试
