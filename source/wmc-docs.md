@@ -182,7 +182,15 @@ exit
 ### python 环境管理
 
 - 推荐使用 Miniconda 进行 python 环境管理。
-- TODO
+- 鉴于集群科学上网需要额外配置，建议 conda 和 pip 设置国内源。下面是简单示例：
+```bash
+# 查看所有配置的软件源和优先级
+conda config --get channels
+pip config list -v
+# 添加软件源（更多源请自行查找）
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+```
 
 ## CUDA 版本问题
 
