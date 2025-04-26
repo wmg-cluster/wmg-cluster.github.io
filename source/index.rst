@@ -5,8 +5,8 @@
 
 .. wmc-docs documentation
 
-WMC User Guide
-======================
+𝐖ei𝐌ing 𝐂luster User Guide
+===========================================
 
 .. code-block:: text
    :class: ascii-art

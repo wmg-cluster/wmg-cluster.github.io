@@ -325,7 +325,7 @@ scp username@remote_host:/remote/path/file.txt /local/path/
 ```
 
 - Linux 和 OpenSSH 客户端还支持 SFTP（SSH File Transfer Protocol）协议，提供多功能文件管理，支持断点续传，但比 SCP 稍慢一些，有需要的用户可以自行查阅相关使用方法。
-- 如需图形化操作，推荐使用 ​WinSCP​（同时支持SCP和SFTP）。
+- 如需图形化操作，推荐使用 ​WinSCP​（同时支持 SCP 和 SFTP ）。
 
 ### TODO
 
