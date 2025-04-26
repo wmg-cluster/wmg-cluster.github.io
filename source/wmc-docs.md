@@ -237,7 +237,7 @@ nvcc --version       # 确认版本是否正确
 
 ## 计算任务管理
 
-> 本章仅介绍基础的任务脚本编写、提交、监控和取消，更多详细内容以及 Q&A 参见[集群任务脚本](./job_scripts.md)。
+> 本章仅介绍基础的任务脚本编写、提交、监控和取消，更多详细内容以及 Q&A 参见[集群任务脚本](./job_scripts.md)和[常见问题](./FAQs.md)。
 
 ### 编写/提交任务脚本 <a id="hyperlink1"></a>
 
@@ -249,9 +249,9 @@ nvcc --version       # 确认版本是否正确
 #!/bin/bash
 #SBATCH -p gpu1             # 在 gpu1 分区运行（不写默认为 cpu1）
 #SBATCH -N 1                # 只在一个节点上运行任务
-#SBATCH -c 1                # 申请 CPU 核心：1个
+#SBATCH -c 1                # 申请 CPU 核心：1 个
 #SBATCH --mem 500           # 申请内存：500 MB
-#SBATCH --gres gpu:1        # 分配1个GPU（纯 CPU 任务不用写）
+#SBATCH --gres gpu:1        # 分配 1 个 GPU（纯 CPU 任务不用写）
 #SBATCH -o test-%j.log      # 输出 log 文件，%j会被自动替换为任务的ID（JobID）
 
 echo "job begin"

@@ -41,6 +41,11 @@
       <span style="color:red; font-weight:bold">务必</span>记得使用 srun 命令或者通过 srun --pty bash 启动交互式 Bash 环境！！！
       <div style="margin: 1em 0"></div>
 
+.. admonition:: 文档改进计划
+   :class: note
+
+   如果发现文档有错漏或者有好的内容（例如一些集群使用技巧或工具）愿意分享，请联系集群管理员或在 GitHub 提交 `Discussions <https://github.com/WeimingGroup/WMC-User-Guide/discussions>`_ 。
+
 .. toctree::
    :maxdepth: 3
    :caption: 目录
