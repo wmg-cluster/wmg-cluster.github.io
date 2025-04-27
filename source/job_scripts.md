@@ -2,7 +2,7 @@
 
 ## 任务信息邮件通知
 
-- 为了方便监控任务运行状况，可以添加一个自动发送邮件的 python 脚本。
+- 为了方便监控任务运行状况，可以添加一个自动发送邮件的 python 脚本。一共需要使用两个邮箱，一个作为发送方，一个作为接收方。相关 python 依赖请自行安装。
 
 ```python
 import smtplib
@@ -54,7 +54,7 @@ if __name__ == '__main__':
 - 最后在 bash 脚本中添加这样一行代码即可使用。
 ```bash
 # your_task_name 替换成你的任务名称
-srun python your_mail_script.py -t your_task_name
+srun python /path/to/your_mail_script.py -t your_task_name-$SLURM_JOB_ID
 ```
 
 ## 多卡任务通信端口
