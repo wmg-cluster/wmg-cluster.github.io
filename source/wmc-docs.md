@@ -214,7 +214,11 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/p
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-- 对于从huggingface load模型，推荐两种方式：1. 在bash脚本里在执行py文件之前 `export HF_ENDPOINT="https://hf-mirror.com"` 修改环境变量。2. 手动下载后上传到集群。
+### Hugging Face 加载模型
+
+- 对于从 huggingface 上 load 模型，推荐两种方式：
+  1. 在 bash 脚本里在执行 python 文件之前 `export HF_ENDPOINT="https://hf-mirror.com"` 修改环境变量。
+  2. 手动下载后上传到集群。
 
 ## CUDA 版本问题
 
