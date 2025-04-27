@@ -25,10 +25,10 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
     # print(args.task)
-    msg_from=""  #填入发送方邮箱
-    smtp=""       #填入发送方邮箱smtp授权码
-    to=""        #填入接收方邮箱
-    subject="CLUSTER-INFO"    #电子邮件的主题
+    msg_from=""                                  #填入发送方邮箱
+    smtp=""                                      #填入发送方邮箱 smtp 授权码
+    to=""                                        #填入接收方邮箱
+    subject="CLUSTER-INFO"                       #电子邮件的主题
     content=f"task {args.task} completed"        #电子邮件的内容
 
     #构造邮件（注意大写字母）
@@ -39,10 +39,10 @@ if __name__ == '__main__':
 
     #发送邮件
     try:
-        ss=smtplib.SMTP_SSL("smtp.163.com",465)   #使用163邮箱时发送方邮箱smtp安全协议
-        # ss=smtplib.SMTP_SSL("smtp.qq.com",465) #使用qq邮箱时的协议设置
-        ss.login(msg_from, smtp)                   #登录                 
-        ss.sendmail(msg_from,to,msg.as_string()) #发送
+        ss=smtplib.SMTP_SSL("smtp.163.com",465)     #使用163邮箱时发送方邮箱smtp安全协议
+        # ss=smtplib.SMTP_SSL("smtp.qq.com",465)    #使用qq邮箱时的协议设置
+        ss.login(msg_from, smtp)                    #登录                 
+        ss.sendmail(msg_from,to,msg.as_string())    #发送
         print("email sent successfully")
     except Exception as e:
         print("sending failed: ",e) 

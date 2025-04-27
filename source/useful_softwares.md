@@ -2,16 +2,8 @@
 
 ## 安装 Linuxbrew (Homebrew)
 
-> 未完成编辑
-
 - 由于用户没有 `sudo` 权限，这里给出不需要权限的 Linuxbrew 安装方法。
 ```bash
-# export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
-# export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
-# export HOMEBREW_INSTALL_FROM_API=1
-# export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
-# export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
-# export HOMEBREW_PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 cd ~
 git clone --depth=1 https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.git brew-install
 # 创建一个文件夹作为安装的位置
@@ -33,11 +25,24 @@ else
 export HOMEBREW_PREFIX=/public/yourname/yourbrew
 # 安装
 /bin/bash brew-install/install.sh
+# 删除用于安装的文件夹
 rm -rf brew-install
-
-# TODO
-~/.linuxbrew/bin/brew shellenv
-test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+```
+- 使用
+```bash
+# 配置临时环境变量
+eval "$(/public/ziyuanfang/.linuxbrew/bin/brew shellenv)"
+# 如果输出正常即可使用
+brew
+```
+- 设置清华源
+```bash
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_INSTALL_FROM_API=1
+export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+export HOMEBREW_PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
 ```
 
 - TODO
