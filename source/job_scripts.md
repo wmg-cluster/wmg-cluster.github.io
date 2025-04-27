@@ -57,7 +57,6 @@ if __name__ == '__main__':
 srun python your_mail_script.py -t your_task_name
 ```
 
-
 ## 多卡任务通信端口
 
 - 多卡任务通常需要指定通信端口，为避免端口冲突，建议在任务脚本通过以下代码动态确定端口。
