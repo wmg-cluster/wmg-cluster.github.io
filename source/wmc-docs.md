@@ -24,26 +24,26 @@
 
 - 集群目前由登录节点、存储节点和计算节点组成，登录节点只负责 SLURM 控制/登录功能，<strong style="color: red;">严禁</strong>在登录节点上运行计算任务。
 
-| 节点名               | 型号/配置                      | 负责功能             |
-|----------------------|-------------------------------|----------------------|
-| wmc-slave-g6         | AMAX SYS-4029GP-TRT 1080Ti*8  |SLURM 控制/登录       |
-| wmc-slave-g7         | AMAX SYS-4029GP-TRT 1080Ti*8  | 计算                 |
-| wmc-slave-g8         | 思腾合力 2080Ti*8              | 计算                 |
-| wmc-slave-g9         | 思腾合力 2080Ti*8              | 计算                 |
-| wmc-slave-g10        | 2080Ti*8                      | 计算                 |
-| wmc-slave-g11        | 2080Ti*8                      | 计算                 |
-| wmc-slave-g12        | 2080Ti*8                      | 计算                 |
-| wmc-slave-g13        | 2080Ti*8                      | 退役                 |
-| wmc-slave-g14        | 2080Ti*10                     | 计算                 |
-| wmc-slave-g15        | 2080Ti*10                     | 计算                 |
-| wmc-argon            | 存储服务器                     | 存储/域控            |
-| wmc-slave-g16        | Amax 3090*10                  | 计算（长期下线，待处理）|
-| wmc-slave-g17        | Amax 3090*10                  | 计算（长期下线，待处理）|
-| wmc-helium           | 存储服务器                     | 存储                 |
-| wmc-slave-g18        | 思腾合力 A6000*10              | 计算                 |
-| wmc-slave-g19        | 思腾合力 A6000*10              | 计算                 |
-| wmc-slave-g20        | 思腾合力 A6000*10              | 计算                 |
-| wmc-krypton          | 思腾合力存储服务器             | 存储                 |
+| 节点名               | 型号/配置                      | CPU数目 | 负责功能             |
+|----------------------|-------------------------------|---------|----------------------|
+| wmc-slave-g6         | AMAX SYS-4029GP-TRT 1080Ti * 8  |         | SLURM 控制/登录       |
+| wmc-slave-g7         | AMAX SYS-4029GP-TRT 1080Ti * 8  |   28    | 计算                 |
+| wmc-slave-g8         | 思腾合力 2080Ti * 8              |   28    | 计算                 |
+| wmc-slave-g9         | 思腾合力 2080Ti * 8              |   28    | 计算                 |
+| wmc-slave-g10        | 2080Ti * 8                      |   28    | 计算                 |
+| wmc-slave-g11        | 2080Ti * 8                      |   28    | 计算                 |
+| wmc-slave-g12        | 2080Ti * 8                      |   28    | 计算                 |
+| wmc-slave-g13        | 2080Ti * 8                      |   28    | 退役                 |
+| wmc-slave-g14        | 2080Ti * 10                     |    32   | 计算                 |
+| wmc-slave-g15        | 2080Ti * 10                     |    32   | 计算                 |
+| wmc-argon            | 存储服务器                     |         | 存储/域控            |
+| wmc-slave-g16        | Amax 3090 * 10                  |   48    | 计算（长期下线，待处理）|
+| wmc-slave-g17        | Amax 3090 * 10                  |   48    | 计算（长期下线，待处理）|
+| wmc-helium           | 存储服务器                       |         | 存储                 |
+| wmc-slave-g18        | 思腾合力 A6000 * 10              |   48    | 计算                 |
+| wmc-slave-g19        | 思腾合力 A6000 * 10              |   48    | 计算                 |
+| wmc-slave-g20        | 思腾合力 A6000 * 10              |   48    | 计算                 |
+| wmc-krypton          | 思腾合力存储服务器             |         | 存储                 |
 
 ## 登录集群
 
@@ -107,6 +107,13 @@ gpu3         up   infinite      4   idle wmc-slave-g[9-11,15]
 gpu4         up   infinite      2  drain wmc-slave-g[16-17]
 gpu5         up   infinite      3    mix wmc-slave-g[18-20]
 ```
+- 通过 `-o` 参数自定义格式可以查看更多信息，例如：
+```bash
+# 显示每个节点的 CPU 和 GPU 总数
+sinfo -o "%20n %10c %25G"
+# 查看内存占用情况
+sinfo -o "%20n %10m %10e %10a"
+```
 
 ### 查看节点状态
 
@@ -133,6 +140,8 @@ NodeName=wmc-slave-g20 Arch=x86_64 CoresPerSocket=24
 - `wmc-mon` 工具可以查看特定计算节点上的 CPU、内存以及 GPU 使用信息。
 - `wmc-mon cpu wmc-slave-g20` : 查看 g20 节点上的所有进程信息（主要是 CPU、内存，输出同 top 命令）
 - `wmc-mon gpu wmc-slave-g20` : 查看 g20 节点上GPU 的使用情况（输出同 nvidia-smi 命令）
+- 如果需要查看各个节点的任务信息，参见[监控任务状态](#hyperlink2)。
+
 ## 调试节点申请&远程 debug
 
 ### 计算资源申请&使用
@@ -271,7 +280,7 @@ sbatch test_sbatch.sh
 
 - <strong style="color: red;">注意</strong> 节点计算资源有限，请估计或测试好任务需要的 CPU/memory 资源，谨慎填写任务脚本，避免出现有 GPU 但是其他资源不够导致他人任务长时间排队的情况。
 
-### 监控任务状态
+### 监控任务状态 <a id="hyperlink2"></a>
 
 - 用 `squeue` 命令查看当前正在运行或排队等待的计算任务。默认情况下，`squeue` 的输出包含以下列：
 
@@ -352,9 +361,11 @@ scp username@remote_host:/remote/path/file.txt /local/path/
 
 ### TODO
 
-## 便捷脚本工具
+## 更多
 
-### 任务信息邮件通知脚本
+### 导航
 
-- [TODO](./handy_script_utilities.md)
+- [集群任务脚本](./job_scripts.md)
+- [常见问题](./FAQs.md)
+- [软件安装](./useful_softwares.md)
 

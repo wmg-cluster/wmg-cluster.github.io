@@ -52,7 +52,7 @@
 
    wmc-docs.md
    job_scripts.md
-   handy_script_utilities.md
+   useful_softwares.md
    FAQs.md
 
 ..  Indices and tables
