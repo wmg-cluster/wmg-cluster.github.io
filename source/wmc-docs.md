@@ -194,7 +194,7 @@ ptvsd.wait_for_attach()
 ### python 环境管理
 
 - 推荐使用 Miniconda 进行 python 环境管理。
-- 鉴于集群科学上网需要额外配置，建议 conda 和 pip 设置国内源。下面是简单示例：
+- 鉴于某些已知原因，建议 conda 和 pip 设置国内源。下面是简单示例：
 ```bash
 # 查看所有配置的软件源和优先级
 conda config --get channels
