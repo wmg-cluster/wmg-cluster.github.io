@@ -4,6 +4,9 @@ on:
   push:
     branches: [ fwt ]
 
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
