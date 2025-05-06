@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html  lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <title>𝐖ei𝐌ing 𝐂luster User Guide</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script src="_static/documentation_options.js?v=5a3fd9cb"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=beaddf03"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="索引" href="genindex.html" />
+  <link rel="search" title="搜索" href="search.html" />
+  <link rel="next" title="WMG集群使用指南" href="wmc-docs.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="#" class="home-link">
+    
+      <span class="site-name">wmc-docs</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">快速搜索</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="搜索" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="#ei-ing-luster-user-guide">目录</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="wmc-docs.html" class="reference internal ">WMG集群使用指南</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="job_scripts.html" class="reference internal ">集群任务脚本</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="useful_softwares.html" class="reference internal ">软件安装</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="FAQs.html" class="reference internal ">常见问题</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="#">Docs</a> &raquo;</li>
+    
+    <li>𝐖ei𝐌ing 𝐂luster User Guide</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="next">
+    <a href="wmc-docs.html"
+       title="下一章">WMG集群使用指南 →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section id="ei-ing-luster-user-guide">
+<h1>𝐖ei𝐌ing 𝐂luster User Guide<a class="headerlink" href="#ei-ing-luster-user-guide" title="Link to this heading">¶</a></h1>
+<div class="ascii-art highlight-text notranslate"><div class="highlight"><pre><span></span> ____________________________________________________________
+| __      __   _       _              ___                    |
+| \ \    / /__(_)_ __ (_)_ _  __ _   / __|_ _ ___ _  _ _ __  |
+|  \ \/\/ / -_) | &#39;  \| | &#39; \/ _&#39; | | (_ | &#39;_/ _ \ || | &#39;_ \ |
+|   \_/\_/\___|_|_|_|_|_|_||_\__, |  \___|_| \___/\_,_| .__/ |
+|                            |___/                    |_|    |
+|============================================================|
+|                                                            |
+|  Bonvenon! This is the computer cluster of Weiming Group.  |
+|                                                            |
+|    Tutorial:  https://wmg.ustc.edu.cn/wiki                 |
+|  Job Status:  https://wmg.ustc.edu.cn/cluster/status.html  |
+|____________________________________________________________|
+</pre></div>
+</div>
+<div class="danger admonition">
+<p class="admonition-title">重要提示</p>
+<div style="margin: 1em 0"></div>
+<span style="color:red; font-weight:bold">严禁</span>在登录节点上直接运行计算任务！！！后果包括但不限于<span style="color:red; font-weight:bold">集群登录节点过载，导致用户集体掉线</span>。
+<div style="margin: 1em 0"></div>
+<span style="color:red; font-weight:bold">务必</span>记得使用 <code>srun</code> 命令或者通过 <code>srun --pty bash</code> 启动交互式 Bash 环境！！！
+<div style="margin: 1em 0"></div></div>
+<div class="note admonition">
+<p class="admonition-title">文档改进计划</p>
+<p>如果发现文档存在错漏、信息过时需要更新或者有好的内容（例如一些集群使用技巧或工具）愿意分享，请联系集群管理员或在 GitHub 提交 <a class="reference external" href="https://github.com/WeimingGroup/WMC-User-Guide/discussions">Discussions</a> 。</p>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="wmc-docs.html">WMG集群使用指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wmc-docs.html#id1">使用须知</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#id2">基本信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#id3">重要注意事项</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wmc-docs.html#id4">集群硬件配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#id5">集群节点清单</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wmc-docs.html#id6">登录集群</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#id7">集群账户</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#id8">新账户首次登录</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#ssh">通过 SSH 连接登录节点</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wmc-docs.html#id9">查看集群/节点状态</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#id10">查看集群状态</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#id11">查看节点状态</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wmc-docs.html#debug">调试节点申请&amp;远程 debug</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#id12">计算资源申请&amp;使用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#vs-code-debug">在集群上使用 VS Code 远程 debug</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wmc-docs.html#id13">环境搭建</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#python">python 环境管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#hugging-face">Hugging Face 加载模型</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wmc-docs.html#cuda">CUDA 版本问题</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#id14">查看当前版本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#id15">指定/更改使用的 CUDA 版本</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wmc-docs.html#id16">计算任务管理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#a-id-hyperlink1-a">编写/提交任务脚本 <a id="hyperlink1"></a></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#a-id-hyperlink2-a">监控任务状态 <a id="hyperlink2"></a></a></li>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#id17">取消任务</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wmc-docs.html#id18">文件传输&amp;管理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#scp">使用 SCP 进行文件传输</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wmc-docs.html#id19">更多</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wmc-docs.html#id20">导航</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="job_scripts.html">集群任务脚本</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="job_scripts.html#id2">任务信息邮件通知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_scripts.html#id3">多卡任务通信端口</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="useful_softwares.html">软件安装</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="useful_softwares.html#linuxbrew-homebrew">安装 Linuxbrew (Homebrew)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="useful_softwares.html#more">MORE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="FAQs.html">常见问题</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="FAQs.html#gpu">有足够的空闲 GPU，但任务无法分配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FAQs.html#id2">任务输出没有立即写入文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FAQs.html#id3">专用网络接入</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="next">
+    <a href="wmc-docs.html"
+       title="下一章">WMG集群使用指南 →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2025, Umbreller.F.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.9.1.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>

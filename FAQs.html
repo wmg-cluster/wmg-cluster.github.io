@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html  lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <title>常见问题</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script src="_static/documentation_options.js?v=5a3fd9cb"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=beaddf03"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="索引" href="genindex.html" />
+  <link rel="search" title="搜索" href="search.html" />
+  <link rel="prev" title="软件安装" href="useful_softwares.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">wmc-docs</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">快速搜索</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="搜索" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#ei-ing-luster-user-guide">目录</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="wmc-docs.html" class="reference internal ">WMG集群使用指南</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="job_scripts.html" class="reference internal ">集群任务脚本</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="useful_softwares.html" class="reference internal ">软件安装</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">常见问题</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#gpu" class="reference internal">有足够的空闲 GPU，但任务无法分配</a></li>
+                
+                  <li class="toctree-l2"><a href="#id2" class="reference internal">任务输出没有立即写入文件</a></li>
+                
+                  <li class="toctree-l2"><a href="#id3" class="reference internal">专用网络接入</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>常见问题</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="useful_softwares.html"
+       title="上一章">← 软件安装</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section id="id1">
+<h1>常见问题<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<section id="gpu">
+<h2>有足够的空闲 GPU，但任务无法分配<a class="headerlink" href="#gpu" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>可分配 CPU 不足：</strong> 为了优化 GPU 和 CPU 的连接，服务器上每个 GPU 核心都有 CPU 亲和性（affinity）设置，即绑定在特定的物理 CPU 上。如果某个物理 CPU 的所有核心都被其他任务分配了，那么对应的 GPU 核心也就没办法再分配了。怀疑出现这种情况的话，可以确认一下同一个节点是否有其他任务占据了大量 CPU 核心。具体查看方法参见<a class="reference internal" href="wmc-docs.html"><span class="doc">集群使用指南</span></a>中的<strong>监控任务状态</strong>小节。</p></li>
+<li><p><strong>可分配内存不足：</strong> 节点的内存也有类似的情况，当剩余的可分配内存不足时同样会导致任务无法分配。怀疑出现这种情况的话，可以通过命令打印节点内存占用情况，具体查看方法参见<a class="reference internal" href="wmc-docs.html"><span class="doc">集群使用指南</span></a>中的<strong>查看集群状态</strong>小节。</p></li>
+<li><p><strong style="color: red;">注意</strong> 节点计算资源有限，请估计或测试好任务需要的 CPU/memory 资源，谨慎填写任务脚本，避免出现有 GPU 但是其他资源不够导致他人任务长时间排队的情况。</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>任务输出没有立即写入文件<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> 提交的批处理 shell 脚本，中间若调用了其他程序，则可能出现程序输出没有立即被写入输出文件的情况。这是因为 Linux 会对文件输出进行缓冲，直到缓冲区打满后才一次性写入磁盘（这样可以减少磁盘读写次数）。</p></li>
+<li><p>为了监视程序进度或调试程序，通常需要关闭缓冲。在 bash 脚本中通过以下命令禁用 Python 标准输出（stdout）和标准错误（stderr）的缓冲：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 设置环境变量 PYTHONUNBUFFERED 的值为 1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>专用网络接入<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>有需要的用户请直接联系管理员。</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="useful_softwares.html"
+       title="上一章">← 软件安装</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2025, Umbreller.F.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.9.1.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>

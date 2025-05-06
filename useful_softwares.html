@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html  lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <title>软件安装</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script src="_static/documentation_options.js?v=5a3fd9cb"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=beaddf03"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="索引" href="genindex.html" />
+  <link rel="search" title="搜索" href="search.html" />
+  <link rel="next" title="常见问题" href="FAQs.html" />
+  <link rel="prev" title="集群任务脚本" href="job_scripts.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">wmc-docs</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">快速搜索</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="搜索" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#ei-ing-luster-user-guide">目录</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="wmc-docs.html" class="reference internal ">WMG集群使用指南</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="job_scripts.html" class="reference internal ">集群任务脚本</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">软件安装</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#linuxbrew-homebrew" class="reference internal">安装 Linuxbrew (Homebrew)</a></li>
+                
+                  <li class="toctree-l2"><a href="#more" class="reference internal">MORE</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="FAQs.html" class="reference internal ">常见问题</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>软件安装</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="job_scripts.html"
+       title="上一章">← 集群任务脚本</a>
+  </li>
+  <li class="next">
+    <a href="FAQs.html"
+       title="下一章">常见问题 →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section id="id1">
+<h1>软件安装<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<section id="linuxbrew-homebrew">
+<h2>安装 Linuxbrew (Homebrew)<a class="headerlink" href="#linuxbrew-homebrew" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>由于用户没有 <code class="docutils literal notranslate"><span class="pre">sudo</span></code> 权限，这里给出不需要权限的 Linuxbrew 安装方法。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~
+git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="o">=</span><span class="m">1</span><span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.git<span class="w"> </span>brew-install
+<span class="c1"># 创建一个文件夹作为安装的位置</span>
+mkdir<span class="w"> </span>yourbrew
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>由于没有 <code class="docutils literal notranslate"><span class="pre">sudo</span></code> 权限，用户对默认安装路径 <code class="docutils literal notranslate"><span class="pre">/home/linuxbrew/.linuxbrew</span></code> 没有写权限，需要注释掉 <code class="docutils literal notranslate"><span class="pre">~/brew-install/install.sh</span></code> 中设置 <code class="docutils literal notranslate"><span class="pre">HOMEBREW_PREFIX</span></code> 的命令：</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">else</span>
+<span class="w">  </span><span class="nv">UNAME_MACHINE</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="w">  </span><span class="c1"># On Linux, this script installs to /home/linuxbrew/.linuxbrew only</span>
+<span class="w">  </span><span class="c1"># HOMEBREW_PREFIX=&quot;/home/linuxbrew/.linuxbrew&quot;  # 像这样注释掉这一行</span>
+<span class="w">  </span><span class="nv">HOMEBREW_REPOSITORY</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOMEBREW_PREFIX</span><span class="si">}</span><span class="s2">/Homebrew&quot;</span>
+<span class="w">  </span><span class="nv">HOMEBREW_CACHE</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.cache/Homebrew&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>执行安装：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 安装路径改为新创建的文件夹</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOMEBREW_PREFIX</span><span class="o">=</span>/public/yourname/yourbrew
+<span class="c1"># 安装</span>
+/bin/bash<span class="w"> </span>brew-install/install.sh
+<span class="c1"># 删除用于安装的文件夹</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>brew-install
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>使用</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 配置临时环境变量</span>
+<span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>/public/ziyuanfang/.linuxbrew/bin/brew<span class="w"> </span>shellenv<span class="k">)</span><span class="s2">&quot;</span>
+<span class="c1"># 如果输出正常即可使用</span>
+brew
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>设置清华源</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">HOMEBREW_BREW_GIT_REMOTE</span><span class="o">=</span><span class="s2">&quot;https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOMEBREW_CORE_GIT_REMOTE</span><span class="o">=</span><span class="s2">&quot;https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOMEBREW_INSTALL_FROM_API</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOMEBREW_API_DOMAIN</span><span class="o">=</span><span class="s2">&quot;https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOMEBREW_BOTTLE_DOMAIN</span><span class="o">=</span><span class="s2">&quot;https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOMEBREW_PIP_INDEX_URL</span><span class="o">=</span><span class="s2">&quot;https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="more">
+<h2>MORE<a class="headerlink" href="#more" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>TODO</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="job_scripts.html"
+       title="上一章">← 集群任务脚本</a>
+  </li>
+  <li class="next">
+    <a href="FAQs.html"
+       title="下一章">常见问题 →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2025, Umbreller.F.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.9.1.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>

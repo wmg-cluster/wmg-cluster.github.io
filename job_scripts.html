@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html  lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <title>集群任务脚本</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script src="_static/documentation_options.js?v=5a3fd9cb"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=beaddf03"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="索引" href="genindex.html" />
+  <link rel="search" title="搜索" href="search.html" />
+  <link rel="next" title="软件安装" href="useful_softwares.html" />
+  <link rel="prev" title="WMG集群使用指南" href="wmc-docs.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">wmc-docs</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">快速搜索</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="搜索" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#ei-ing-luster-user-guide">目录</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="wmc-docs.html" class="reference internal ">WMG集群使用指南</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">集群任务脚本</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#id2" class="reference internal">任务信息邮件通知</a></li>
+                
+                  <li class="toctree-l2"><a href="#id3" class="reference internal">多卡任务通信端口</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="useful_softwares.html" class="reference internal ">软件安装</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="FAQs.html" class="reference internal ">常见问题</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>集群任务脚本</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="wmc-docs.html"
+       title="上一章">← WMG集群使用指南</a>
+  </li>
+  <li class="next">
+    <a href="useful_softwares.html"
+       title="下一章">软件安装 →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section id="id1">
+<h1>集群任务脚本<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<section id="id2">
+<h2>任务信息邮件通知<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>为了方便监控任务运行状况，可以添加一个自动发送邮件的 python 脚本。一共需要使用两个邮箱，一个作为发送方，一个作为接收方。相关 python 依赖请自行安装。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">smtplib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">email.mime.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">MIMEText</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_args</span><span class="p">():</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Provide message to send.&quot;</span>
+    <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;--task&#39;</span><span class="p">,</span> 
+        <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> 
+        <span class="n">default</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The name of submitted task&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parse_args</span><span class="p">()</span>
+    <span class="c1"># print(args.task)</span>
+    <span class="n">msg_from</span><span class="o">=</span><span class="s2">&quot;&quot;</span>                                  <span class="c1">#填入发送方邮箱</span>
+    <span class="n">smtp</span><span class="o">=</span><span class="s2">&quot;&quot;</span>                                      <span class="c1">#填入发送方邮箱 smtp 授权码</span>
+    <span class="n">to</span><span class="o">=</span><span class="s2">&quot;&quot;</span>                                        <span class="c1">#填入接收方邮箱</span>
+    <span class="n">subject</span><span class="o">=</span><span class="s2">&quot;CLUSTER-INFO&quot;</span>                       <span class="c1">#电子邮件的主题</span>
+    <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;task </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">task</span><span class="si">}</span><span class="s2"> completed&quot;</span>        <span class="c1">#电子邮件的内容</span>
+
+    <span class="c1">#构造邮件（注意大写字母）</span>
+    <span class="n">msg</span><span class="o">=</span><span class="n">MIMEText</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+    <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;Subject&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">subject</span>
+    <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;From&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">msg_from</span>
+    <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;To&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">to</span>
+
+    <span class="c1">#发送邮件</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ss</span><span class="o">=</span><span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP_SSL</span><span class="p">(</span><span class="s2">&quot;smtp.163.com&quot;</span><span class="p">,</span><span class="mi">465</span><span class="p">)</span>     <span class="c1">#使用163邮箱时发送方邮箱smtp安全协议</span>
+        <span class="c1"># ss=smtplib.SMTP_SSL(&quot;smtp.qq.com&quot;,465)    #使用qq邮箱时的协议设置</span>
+        <span class="n">ss</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">msg_from</span><span class="p">,</span> <span class="n">smtp</span><span class="p">)</span>                    <span class="c1">#登录                 </span>
+        <span class="n">ss</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">msg_from</span><span class="p">,</span><span class="n">to</span><span class="p">,</span><span class="n">msg</span><span class="o">.</span><span class="n">as_string</span><span class="p">())</span>    <span class="c1">#发送</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;email sent successfully&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sending failed: &quot;</span><span class="p">,</span><span class="n">e</span><span class="p">)</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>注意有一点是需要用户自行获得邮箱的 smtp 码才能够使用，下面是两种常用的邮箱 smtp 码获取方式：</p>
+<ul>
+<li><p><strong>qq邮箱</strong>：进入邮箱网页版界面后，点击“设置”，再点击“账号”，在 “POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务” 中管理或者生成 smtp 授权码即可。</p></li>
+<li><p><strong>163邮箱</strong>：进入邮箱网页版界面后，点击“设置”，再点击“POP3/SMTP/IMAP”中进行配置即可。</p></li>
+</ul>
+</li>
+<li><p>最后在 bash 脚本中添加这样一行代码即可使用。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># your_task_name 替换成你的任务名称</span>
+srun<span class="w"> </span>python<span class="w"> </span>/path/to/your_mail_script.py<span class="w"> </span>-t<span class="w"> </span>your_task_name-<span class="nv">$SLURM_JOB_ID</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>多卡任务通信端口<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>多卡任务通常需要指定通信端口，为避免端口冲突，建议在任务脚本通过以下代码动态确定端口。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 生成 50000~60000 的随机端口，直到找到可用端口 MASTER_PORT</span>
+<span class="k">while</span><span class="w"> </span>:<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nv">MASTER_PORT</span><span class="o">=</span><span class="k">$((</span><span class="w"> </span><span class="nv">RANDOM</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m">10001</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">50000</span><span class="w"> </span><span class="k">))</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>!<span class="w"> </span>ss<span class="w"> </span>-tuln<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;:</span><span class="si">${</span><span class="nv">MASTER_PORT</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Selected available port: </span><span class="si">${</span><span class="nv">MASTER_PORT</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="k">break</span>
+<span class="w">    </span><span class="k">fi</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="wmc-docs.html"
+       title="上一章">← WMG集群使用指南</a>
+  </li>
+  <li class="next">
+    <a href="useful_softwares.html"
+       title="下一章">软件安装 →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2025, Umbreller.F.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.9.1.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>

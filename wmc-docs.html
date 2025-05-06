@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html  lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <title>WMG集群使用指南</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script src="_static/documentation_options.js?v=5a3fd9cb"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=beaddf03"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="索引" href="genindex.html" />
+  <link rel="search" title="搜索" href="search.html" />
+  <link rel="next" title="集群任务脚本" href="job_scripts.html" />
+  <link rel="prev" title="𝐖ei𝐌ing 𝐂luster User Guide" href="index.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">wmc-docs</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">快速搜索</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="搜索" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#ei-ing-luster-user-guide">目录</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">WMG集群使用指南</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#id1" class="reference internal">使用须知</a></li>
+                
+                  <li class="toctree-l2"><a href="#id4" class="reference internal">集群硬件配置</a></li>
+                
+                  <li class="toctree-l2"><a href="#id6" class="reference internal">登录集群</a></li>
+                
+                  <li class="toctree-l2"><a href="#id9" class="reference internal">查看集群/节点状态</a></li>
+                
+                  <li class="toctree-l2"><a href="#debug" class="reference internal">调试节点申请&远程 debug</a></li>
+                
+                  <li class="toctree-l2"><a href="#id13" class="reference internal">环境搭建</a></li>
+                
+                  <li class="toctree-l2"><a href="#cuda" class="reference internal">CUDA 版本问题</a></li>
+                
+                  <li class="toctree-l2"><a href="#id16" class="reference internal">计算任务管理</a></li>
+                
+                  <li class="toctree-l2"><a href="#id18" class="reference internal">文件传输&管理</a></li>
+                
+                  <li class="toctree-l2"><a href="#id19" class="reference internal">更多</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="job_scripts.html" class="reference internal ">集群任务脚本</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="useful_softwares.html" class="reference internal ">软件安装</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="FAQs.html" class="reference internal ">常见问题</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>WMG集群使用指南</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="index.html"
+       title="上一章">← 𝐖ei𝐌ing 𝐂luster User Guide</a>
+  </li>
+  <li class="next">
+    <a href="job_scripts.html"
+       title="下一章">集群任务脚本 →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section id="wmg">
+<h1>WMG集群使用指南<a class="headerlink" href="#wmg" title="Link to this heading">¶</a></h1>
+<blockquote>
+<div><p><strong>Version:</strong> v1.0  |  <strong>Date:</strong> 2025-04-24</p>
+</div></blockquote>
+<section id="id1">
+<h2>使用须知<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<section id="id2">
+<h3>基本信息<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>集群管理和作业调度系统</strong>目前采用<strong>SLURM</strong>（<strong>S</strong>imple <strong>L</strong>inux <strong>U</strong>tility for <strong>R</strong>esource <strong>M</strong>anagement）开源框架。</p></li>
+<li><p>WMG计算集群包括一个<strong>登录节点</strong>和若干<strong>计算节点</strong>组成。</p></li>
+<li><p>集群用户直接访问的是<strong>登录节点</strong>，需要通过 Slurm 作业管理器提供的命令行接口向<strong>计算节点</strong>提交计算任务。具体方法参见<a class="reference external" href="#hyperlink1">编写/提交任务脚本</a>。</p></li>
+<li><p>计算集群操作系统为使用 <strong>Linux</strong> 内核的 <code class="docutils literal notranslate"><span class="pre">Ubuntu</span> <span class="pre">20.04</span></code> 操作系统。</p></li>
+<li><p>使用集群需要掌握简单的 <strong>Linux</strong> 命令行操作，网上有很多这方面的教程，也可以使用 GPT 等 LLM 工具帮助生成和编辑目标命令。</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>重要注意事项<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong style="color: red;">严禁</strong>在登录节点上直接运行计算任务！！！后果包括但不限于<strong style="color: red;">集群登录节点过载，导致用户集体掉线</strong>。</p></li>
+<li><p><strong style="color: red;">务必</strong>记得使用 <code class="docutils literal notranslate"><span class="pre">srun</span></code> 命令或者通过 <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">--pty</span> <span class="pre">bash</span></code> 启动交互式 Bash 环境！！！</p></li>
+<li><p><strong style="color: red;">注意</strong> 节点计算资源有限，请估计或测试好任务需要的 CPU/memory 资源，谨慎填写任务脚本，避免出现有 GPU 但是其他资源不够导致他人任务长时间排队的情况。</p></li>
+</ul>
+</section>
+</section>
+<section id="id4">
+<h2>集群硬件配置<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<section id="id5">
+<h3>集群节点清单<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>集群目前由登录节点、存储节点和计算节点组成，登录节点只负责 SLURM 控制/登录功能，<strong style="color: red;">严禁</strong>在登录节点上运行计算任务。</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>节点名</th>
+<th>型号/配置</th>
+<th>CPU数目</th>
+<th>负责功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wmc-slave-g6</td>
+<td>AMAX SYS-4029GP-TRT 1080Ti * 8</td>
+<td></td>
+<td>SLURM 控制/登录</td>
+</tr>
+<tr>
+<td>wmc-slave-g7</td>
+<td>AMAX SYS-4029GP-TRT 1080Ti * 8</td>
+<td>28</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>wmc-slave-g8</td>
+<td>思腾合力 2080Ti * 8</td>
+<td>28</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>wmc-slave-g9</td>
+<td>思腾合力 2080Ti * 8</td>
+<td>28</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>wmc-slave-g10</td>
+<td>2080Ti * 8</td>
+<td>28</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>wmc-slave-g11</td>
+<td>2080Ti * 8</td>
+<td>28</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>wmc-slave-g12</td>
+<td>2080Ti * 8</td>
+<td>28</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>wmc-slave-g13</td>
+<td>2080Ti * 8</td>
+<td>28</td>
+<td>退役</td>
+</tr>
+<tr>
+<td>wmc-slave-g14</td>
+<td>2080Ti * 10</td>
+<td>32</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>wmc-slave-g15</td>
+<td>2080Ti * 10</td>
+<td>32</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>wmc-argon</td>
+<td>存储服务器</td>
+<td></td>
+<td>存储/域控</td>
+</tr>
+<tr>
+<td>wmc-slave-g16</td>
+<td>Amax 3090 * 10</td>
+<td>48</td>
+<td>计算（长期下线，待处理）</td>
+</tr>
+<tr>
+<td>wmc-slave-g17</td>
+<td>Amax 3090 * 10</td>
+<td>48</td>
+<td>计算（长期下线，待处理）</td>
+</tr>
+<tr>
+<td>wmc-helium</td>
+<td>存储服务器</td>
+<td></td>
+<td>存储</td>
+</tr>
+<tr>
+<td>wmc-slave-g18</td>
+<td>思腾合力 A6000 * 10</td>
+<td>48</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>wmc-slave-g19</td>
+<td>思腾合力 A6000 * 10</td>
+<td>48</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>wmc-slave-g20</td>
+<td>思腾合力 A6000 * 10</td>
+<td>48</td>
+<td>计算</td>
+</tr>
+<tr>
+<td>wmc-krypton</td>
+<td>思腾合力存储服务器</td>
+<td></td>
+<td>存储</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+<section id="id6">
+<h2>登录集群<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<section id="id7">
+<h3>集群账户<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>需要使用集群的老师和同学请联系管理员开通账户。每个集群用户使用独立的 Linux 账户登录和提交任务。为保证服务器安全，普通用户不提供 root 权限。</p></li>
+<li><p>默认登录节点：wmc-slave-g6（用于 SSH 连接）</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>新账户首次登录<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>首次登录时需要修改初始密码（注意输入一遍初始密码两遍新密码）：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>You<span class="w"> </span>must<span class="w"> </span>change<span class="w"> </span>your<span class="w"> </span>password<span class="w"> </span>now<span class="w"> </span>and<span class="w"> </span>login<span class="w"> </span>again!
+Current<span class="w"> </span>Password:<span class="w"> </span><span class="o">(</span>输入初始密码<span class="o">)</span>
+New<span class="w"> </span>password:<span class="w"> </span><span class="o">(</span>输入新密码<span class="o">)</span>
+Retype<span class="w"> </span>new<span class="w"> </span>password:<span class="w"> </span><span class="o">(</span>再次输入新密码<span class="o">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>修改完成后重新登录，成功后即可得到命令提示符：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Welcome!<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>Computer<span class="w"> </span>Cluster<span class="w"> </span>of<span class="w"> </span>Weiming<span class="w"> </span>Lab.
+</pre></div>
+</div>
+</section>
+<section id="ssh">
+<h3>通过 SSH 连接登录节点<a class="headerlink" href="#ssh" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>用户在登录节点上使用 Slurm 命令行提交计算任务，另外也可以进行一些简单的数据处理操作。</p></li>
+<li><p>推荐使用 VS Code 插件 Remote-SSH 进行连接。config 文件示例（将信息提示替换为对应内容即可使用）：</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">wmg</span><span class="o">-</span><span class="n">cluster</span>
+    <span class="n">HostName</span> <span class="n">ClusterAddress</span>
+    <span class="n">User</span> <span class="n">YourAccount</span>
+    <span class="c1"># 可以选择生成公私密钥对，将公钥添加到集群，如果使用密码登录可以将这条注释掉</span>
+    <span class="n">IdentityFile</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">key</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Windows/Linux 公私密钥对生成及使用请自行查找相关资料或借助 GPT 生成相关命令。</p></li>
+</ul>
+</section>
+</section>
+<section id="id9">
+<h2>查看集群/节点状态<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<section id="id10">
+<h3>查看集群状态<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>在登陆节点上，使用 Slurm 提供的命令可以查看集群的各项状态。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sinfo</span></code> 命令可以看到哪些分区/计算节点是空闲的（idle）、分配了一部分资源（mix）或者完全占满了（alloc），输出示例如下：</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PARTITION</span> <span class="n">AVAIL</span>  <span class="n">TIMELIMIT</span>  <span class="n">NODES</span>  <span class="n">STATE</span> <span class="n">NODELIST</span>
+<span class="n">cpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span> <span class="n">drain</span><span class="o">*</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g13</span>
+<span class="n">cpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span>  <span class="n">drain</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g7</span>
+<span class="n">cpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">2</span>    <span class="n">mix</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+<span class="n">cpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">3</span>   <span class="n">idle</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">9</span><span class="o">-</span><span class="mi">11</span><span class="p">]</span>
+<span class="n">cpu4</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span>    <span class="n">mix</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g14</span>
+<span class="n">cpu4</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span>   <span class="n">idle</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g15</span>
+<span class="n">cpu5</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">2</span>  <span class="n">drain</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">16</span><span class="o">-</span><span class="mi">17</span><span class="p">]</span>
+<span class="n">gpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span> <span class="n">drain</span><span class="o">*</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g13</span>
+<span class="n">gpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">3</span>    <span class="n">mix</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="n">gpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">4</span>   <span class="n">idle</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">9</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span><span class="mi">15</span><span class="p">]</span>
+<span class="n">gpu4</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">2</span>  <span class="n">drain</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">16</span><span class="o">-</span><span class="mi">17</span><span class="p">]</span>
+<span class="n">gpu5</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">3</span>    <span class="n">mix</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">18</span><span class="o">-</span><span class="mi">20</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>通过 <code class="docutils literal notranslate"><span class="pre">-o</span></code> 参数自定义格式可以查看更多信息，例如：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 显示每个节点的 CPU 和 GPU 总数</span>
+sinfo<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%20n %10c %25G&quot;</span>
+<span class="c1"># 查看内存占用情况</span>
+sinfo<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%20n %10m %10e %10a&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h3>查看节点状态<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scontrol</span></code> 命令则可展示更详细的信息。<code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">node</span> <span class="pre">具体节点</span></code> 查询节点信息、<code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">partition</span></code> 查询分区信息。</p></li>
+<li><p>例如 <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">node</span> <span class="pre">wmc-slave-g20</span></code>，得到输出如下：</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NodeName</span><span class="o">=</span><span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g20</span> <span class="n">Arch</span><span class="o">=</span><span class="n">x86_64</span> <span class="n">CoresPerSocket</span><span class="o">=</span><span class="mi">24</span>
+   <span class="n">CPUAlloc</span><span class="o">=</span><span class="mi">7</span> <span class="n">CPUTot</span><span class="o">=</span><span class="mi">48</span> <span class="n">CPULoad</span><span class="o">=</span><span class="mf">15.36</span>
+   <span class="n">AvailableFeatures</span><span class="o">=</span><span class="p">(</span><span class="n">null</span><span class="p">)</span>
+   <span class="n">ActiveFeatures</span><span class="o">=</span><span class="p">(</span><span class="n">null</span><span class="p">)</span>
+   <span class="n">Gres</span><span class="o">=</span><span class="n">gpu</span><span class="p">:</span><span class="mi">10</span><span class="p">(</span><span class="n">S</span><span class="p">:</span><span class="mi">0</span><span class="p">)</span>
+   <span class="n">NodeAddr</span><span class="o">=</span><span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g20</span> <span class="n">NodeHostName</span><span class="o">=</span><span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g20</span> <span class="n">Version</span><span class="o">=</span><span class="mf">20.02.3</span>
+   <span class="n">OS</span><span class="o">=</span><span class="n">Linux</span> <span class="mf">5.4.0</span><span class="o">-</span><span class="mi">89</span><span class="o">-</span><span class="n">generic</span> <span class="c1">#100~18.04.1-Ubuntu SMP Wed Sep 29 10:59:42 UTC 2021</span>
+   <span class="n">RealMemory</span><span class="o">=</span><span class="mi">248000</span> <span class="n">AllocMem</span><span class="o">=</span><span class="mi">214688</span> <span class="n">FreeMem</span><span class="o">=</span><span class="mi">59620</span> <span class="n">Sockets</span><span class="o">=</span><span class="mi">2</span> <span class="n">Boards</span><span class="o">=</span><span class="mi">1</span>
+   <span class="n">State</span><span class="o">=</span><span class="n">MIXED</span> <span class="n">ThreadsPerCore</span><span class="o">=</span><span class="mi">1</span> <span class="n">TmpDisk</span><span class="o">=</span><span class="mi">0</span> <span class="n">Weight</span><span class="o">=</span><span class="mi">1</span> <span class="n">Owner</span><span class="o">=</span><span class="n">N</span><span class="o">/</span><span class="n">A</span> <span class="n">MCS_label</span><span class="o">=</span><span class="n">N</span><span class="o">/</span><span class="n">A</span>
+   <span class="n">Partitions</span><span class="o">=</span><span class="n">gpu5</span>
+   <span class="n">BootTime</span><span class="o">=</span><span class="mi">2024</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">26</span><span class="n">T11</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mi">42</span> <span class="n">SlurmdStartTime</span><span class="o">=</span><span class="mi">2024</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">26</span><span class="n">T11</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">20</span>
+   <span class="n">CfgTRES</span><span class="o">=</span><span class="n">cpu</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span><span class="n">mem</span><span class="o">=</span><span class="mi">248000</span><span class="n">M</span><span class="p">,</span><span class="n">billing</span><span class="o">=</span><span class="mi">48</span>
+   <span class="n">AllocTRES</span><span class="o">=</span><span class="n">cpu</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">mem</span><span class="o">=</span><span class="mi">214688</span><span class="n">M</span>
+   <span class="n">CapWatts</span><span class="o">=</span><span class="n">n</span><span class="o">/</span><span class="n">a</span>
+   <span class="n">CurrentWatts</span><span class="o">=</span><span class="mi">0</span> <span class="n">AveWatts</span><span class="o">=</span><span class="mi">0</span>
+   <span class="n">ExtSensorsJoules</span><span class="o">=</span><span class="n">n</span><span class="o">/</span><span class="n">s</span> <span class="n">ExtSensorsWatts</span><span class="o">=</span><span class="mi">0</span> <span class="n">ExtSensorsTemp</span><span class="o">=</span><span class="n">n</span><span class="o">/</span><span class="n">s</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wmc-mon</span></code> 工具可以查看特定计算节点上的 CPU、内存以及 GPU 使用信息。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wmc-mon</span> <span class="pre">cpu</span> <span class="pre">wmc-slave-g20</span></code> : 查看 g20 节点上的所有进程信息（主要是 CPU、内存，输出同 top 命令）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wmc-mon</span> <span class="pre">gpu</span> <span class="pre">wmc-slave-g20</span></code> : 查看 g20 节点上GPU 的使用情况（输出同 nvidia-smi 命令）</p></li>
+<li><p>如果需要查看各个节点的任务信息，参见<a class="reference external" href="#hyperlink2">监控任务状态</a>。</p></li>
+</ul>
+</section>
+</section>
+<section id="debug">
+<h2>调试节点申请&amp;远程 debug<a class="headerlink" href="#debug" title="Link to this heading">¶</a></h2>
+<section id="id12">
+<h3>计算资源申请&amp;使用<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>用户需要通过 <code class="docutils literal notranslate"><span class="pre">salloc</span></code> 命令申请资源后，使用 <code class="docutils literal notranslate"><span class="pre">srun</span></code> 运行调试任务。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">salloc</span></code> 命令示例如下：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用 Slurm 分配交互式计算资源：</span>
+<span class="c1">#   --nodelist=wmc-slave-g12  # [可选] 强制指定节点名称，若省略则由系统自动分配</span>
+<span class="c1">#   -p gpu3                   # 提交到 gpu3 分区（通常为 GPU 节点专用队列）</span>
+<span class="c1">#   -N 1                      # 分配 1 个计算节点</span>
+<span class="c1">#   -c 4                      # 每任务占用 4 个 CPU 核心</span>
+<span class="c1">#   --mem 30G                 # 分配 30GB 内存</span>
+<span class="c1">#   --gres gpu:1              # 分配 1 块目标 GPU</span>
+salloc<span class="w"> </span>--nodelist<span class="o">=</span>wmc-slave-g12<span class="w"> </span>-p<span class="w"> </span>gpu3<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span>--mem<span class="w"> </span>30G<span class="w"> </span>--gres<span class="w"> </span>gpu:1
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>获得计算资源分配后，<strong style="color: red;">务必</strong>使用 <code class="docutils literal notranslate"><span class="pre">srun</span></code> 进行调试，否则<strong style="color: red;">任务会运行在登录节点上，可能导致集群崩溃</strong>。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 调试命令必须以 srun 开头，才能运行在分配的计算节点上</span>
+<span class="c1"># 未加 srun 仍是在登录节点执行命令</span>
+hostname<span class="w">                      </span>
+<span class="c1"># 使用 srun 在计算节点执行命令</span>
+srun<span class="w"> </span>hostname
+<span class="c1"># 查看分配的 gpu 信息</span>
+srun<span class="w"> </span>nvidia-smi
+<span class="c1"># 运行 python 脚本</span>
+srun<span class="w"> </span>python<span class="w"> </span>your_script.py
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>推荐</strong>在已分配的 Slurm 计算节点上，直接启动一个交互式 Bash Shell ，这样在后续调试中可以不用 <code class="docutils literal notranslate"><span class="pre">srun</span></code> 命令，防止不小心忘记。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 分配临时节点启动交互式 Bash</span>
+srun<span class="w"> </span>--pty<span class="w"> </span>bash
+<span class="c1"># 进入交互式环境后可自由执行命令，不需要再使用 srun</span>
+nvidia-smi
+python<span class="w"> </span>debug.py
+<span class="c1"># 退出交互式环境</span>
+<span class="nb">exit</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>结束调试后，<strong style="color: red;">务必</strong>记得释放分配的计算资源，这里的 <code class="docutils literal notranslate"><span class="pre">exit</span></code> 命令和退出交互式环境的命令是分开的。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 释放分配的计算资源</span>
+<span class="nb">exit</span>
+</pre></div>
+</div>
+</section>
+<section id="vs-code-debug">
+<h3>在集群上使用 VS Code 远程 debug<a class="headerlink" href="#vs-code-debug" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>首先，需要安装 VS Code 的 Remote-SSH 插件。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ptvsd</span></code>，将以下代码加到需要调试的代码前面：</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ptvsd</span>
+<span class="n">ptvsd</span><span class="o">.</span><span class="n">enable_attach</span><span class="p">(</span><span class="n">address</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">))</span>
+<span class="n">ptvsd</span><span class="o">.</span><span class="n">wait_for_attach</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>在服务器上申请资源，<code class="docutils literal notranslate"><span class="pre">srun</span></code> 运行 python 文件。</p></li>
+<li><p>在 VS Code 左侧点击“运行和调试”的图标（或 <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+D</span></code> ），点击“运行和调试”按钮（没有的话点击 Python Debugger 旁边的齿轮），调试器选择 Python Debugger ，调试配置选择“远程附加”， 主机名填 <code class="docutils literal notranslate"><span class="pre">wmc-slave-gX</span></code> （X为申请的调试节点），端口号填 3000 ，之后选择调试。此时，在代码上可以直接添加断点，中间变量可以在左侧实时看到。这个过程实际上是在创建一个 json 文件作为远程调试的配置。</p></li>
+<li><p>在调试完之后，<strong style="color: red;">务必</strong>记得释放申请的资源！</p></li>
+</ul>
+</section>
+</section>
+<section id="id13">
+<h2>环境搭建<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<section id="python">
+<h3>python 环境管理<a class="headerlink" href="#python" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>推荐使用 Miniconda 进行 python 环境管理。</p></li>
+<li><p>鉴于某些已知原因，建议 conda 和 pip 设置国内源。下面是简单示例：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 查看所有配置的软件源和优先级</span>
+conda<span class="w"> </span>config<span class="w"> </span>--get<span class="w"> </span>channels
+pip<span class="w"> </span>config<span class="w"> </span>list<span class="w"> </span>-v
+<span class="c1"># 添加软件源（更多源请自行查找）</span>
+conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro
+pip<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>global.index-url<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple
+</pre></div>
+</div>
+</section>
+<section id="hugging-face">
+<h3>Hugging Face 加载模型<a class="headerlink" href="#hugging-face" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>对于从 huggingface 上 load 模型，推荐两种方式：</p>
+<ol class="simple">
+<li><p>在 bash 脚本里，运行 python 文件之前先通过命令 <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">HF_ENDPOINT=&quot;https://hf-mirror.com&quot;</span></code> 修改环境变量。</p></li>
+<li><p>直接本地手动下载后上传到集群。</p></li>
+</ol>
+</li>
+</ul>
+</section>
+</section>
+<section id="cuda">
+<h2>CUDA 版本问题<a class="headerlink" href="#cuda" title="Link to this heading">¶</a></h2>
+<section id="id14">
+<h3>查看当前版本<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>可以使用以下命令查看版本，如果驱动支持 CUDA 版本过低，请联系管理员更新 GPU 节点驱动。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 驱动支持的最高 CUDA 版本（不一定是实际安装版本）</span>
+nvidia-smi
+<span class="c1"># 当前实际安装的 CUDA Toolkit 版本</span>
+nvcc<span class="w"> </span>--version
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>某些节点运行 <code class="docutils literal notranslate"><span class="pre">nvcc</span> <span class="pre">--verison</span></code> 会出现 <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">'nvcc'</span> <span class="pre">not</span> <span class="pre">found</span></code> 的情况，可以尝试手动指定CUDA版本，具体操作见下一小节。</p></li>
+</ul>
+</section>
+<section id="id15">
+<h3>指定/更改使用的 CUDA 版本<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>集群提供多个 CUDA 版本，存放在 <code class="docutils literal notranslate"><span class="pre">/app/cuda</span></code> 路径下，用户可以查看并选择合适的版本。</p></li>
+<li><p>用户可以通过修改环境变量指定 CUDA 版本：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 临时修改环境变量（仅当前终端生效）</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_HOME</span><span class="o">=</span>/app/cuda/cuda-11.8
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
+<span class="c1"># 验证环境变量</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$CUDA_HOME</span><span class="w">      </span><span class="c1"># 应输出 /app/cuda/cuda-11.8</span>
+which<span class="w"> </span>nvcc<span class="w">           </span><span class="c1"># 应显示 /app/cuda/cuda-11.8/bin/nvcc</span>
+nvcc<span class="w"> </span>--version<span class="w">       </span><span class="c1"># 确认版本是否正确</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>在任务脚本中同样可以用上述命令指定任务运行的 CUDA 版本。</p></li>
+</ul>
+</section>
+</section>
+<section id="id16">
+<h2>计算任务管理<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>本章仅介绍基础的任务脚本编写、提交、监控和取消，更多详细内容以及 Q&amp;A 参见<a class="reference internal" href="job_scripts.html"><span class="doc">集群任务脚本</span></a>和<a class="reference internal" href="FAQs.html"><span class="doc">常见问题</span></a>。</p>
+</div></blockquote>
+<section id="a-id-hyperlink1-a">
+<h3>编写/提交任务脚本 <a id="hyperlink1"></a><a class="headerlink" href="#a-id-hyperlink1-a" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>任务脚本用于描述 Slurm 计算任务。下面是一个简单的例子，这个脚本打印了一行文字、执行了一个 python 脚本、最后又打印了一行文字。</p></li>
+<li><p>文件：test_sbatch.sh</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -p gpu1             # 在 gpu1 分区运行（不写默认为 cpu1）</span>
+<span class="c1">#SBATCH -N 1                # 只在一个节点上运行任务</span>
+<span class="c1">#SBATCH -c 1                # 申请 CPU 核心：1 个</span>
+<span class="c1">#SBATCH --mem 500           # 申请内存：500 MB</span>
+<span class="c1">#SBATCH --gres gpu:1        # 分配 1 个 GPU（纯 CPU 任务不用写）</span>
+<span class="c1">#SBATCH -o test-%j.log      # 输出 log 文件，%j会被自动替换为任务的ID（JobID）</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;job begin&quot;</span>
+python3<span class="w"> </span>my_script.py<span class="w">  </span><span class="c1"># my_script.py 是用户的 python 程序</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;job end&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>这个任务脚本实际上就是个 bash 脚本。Slurm 读取以 <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> 起始的行，这些行在 bash 语法里是注释，因此 bash 不会理会。<a class="reference internal" href="job_scripts.html"><span class="doc">集群任务脚本</span></a> 中提供了更多示例。</p></li>
+<li><p>调试时可以通过以下命令进行试运行：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在调试节点运行名为 test_sbatch.sh 的 Bash 脚本</span>
+srun<span class="w"> </span>bash<span class="w"> </span>test_sbatch.sh
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>写好任务脚本后，使用 <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> 命令向集群提交计算任务。若提交成功，<code class="docutils literal notranslate"><span class="pre">sbatch</span></code> 会输出任务编号，该任务会进入队列，请求的资源可用后就会执行。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 这里也可以用 --nodelist 参数指定节点</span>
+sbatch<span class="w"> </span>test_sbatch.sh
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong style="color: red;">注意</strong> 节点计算资源有限，请估计或测试好任务需要的 CPU/memory 资源，谨慎填写任务脚本，避免出现有 GPU 但是其他资源不够导致他人任务长时间排队的情况。</p></li>
+</ul>
+</section>
+<section id="a-id-hyperlink2-a">
+<h3>监控任务状态 <a id="hyperlink2"></a><a class="headerlink" href="#a-id-hyperlink2-a" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>用 <code class="docutils literal notranslate"><span class="pre">squeue</span></code> 命令查看当前正在运行或排队等待的计算任务。默认情况下，<code class="docutils literal notranslate"><span class="pre">squeue</span></code> 的输出包含以下列：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span><span class="w"> </span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">squeue</span></code> 命令也支持通过 <code class="docutils literal notranslate"><span class="pre">-o</span></code> 参数自定义格式，示例如下。每个 %.Nx 表示一个字段，其中： N 是字段的固定宽度（字符数），不足时填充空格，超过时截断。 x 是字段类型标识符。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%.10i %.9P %.50j %.14u %.12T %.14M %.18R %.6C %.14b&quot;</span>
+<span class="c1"># 输出格式示例</span>
+<span class="w">     </span>JOBID<span class="w"> </span>PARTITION<span class="w">                                               </span>NAME<span class="w">           </span>USER<span class="w">        </span>STATE<span class="w">           </span>TIME<span class="w">   </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span><span class="w">   </span>CPUS<span class="w">  </span>TRES_PER_NODE
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>输出解析</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>字段名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>JOBID</strong></td>
+<td>任务的唯一标识符</td>
+</tr>
+<tr>
+<td><strong>PARTITION</strong></td>
+<td>任务所在的队列/分区名称</td>
+</tr>
+<tr>
+<td><strong>NAME</strong></td>
+<td>任务名称（通常为提交脚本的名称）</td>
+</tr>
+<tr>
+<td><strong>USER</strong></td>
+<td>提交任务的用户名</td>
+</tr>
+<tr>
+<td><strong>ST(STATE)</strong></td>
+<td>任务状态代码（如 <code>PD</code>、<code>R</code>、<code>CG</code> 等）</td>
+</tr>
+<tr>
+<td><strong>TIME</strong></td>
+<td>任务已运行时间（格式为 <code>天数-小时:分钟:秒</code>，如 <code>2-13:45:30</code>）</td>
+</tr>
+<tr>
+<td><strong>NODES</strong></td>
+<td>任务使用的节点数量</td>
+</tr>
+<tr>
+<td><strong>NODELIST(REASON)</strong></td>
+<td>分配的节点列表（如已运行）或未运行的原因（如 <code>Resources</code>、<code>Priority</code>）</td>
+</tr>
+<tr>
+<td><strong>CPUS</strong></td>
+<td>​  任务分配的 CPU 核心数量</td>
+</tr>
+<tr>
+<td><strong>TRES_PER_NODE</strong></td>
+<td>每节点可跟踪资源（Trackable RESources per Node），通常为任务分配的 GPU 数目</td>
+</tr>
+</tbody>
+</table><ul class="simple">
+<li><p>常见任务状态</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>代码</th>
+<th>全称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PD</code></td>
+<td>PENDING</td>
+<td>作业正在排队等待资源</td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td>RUNNING</td>
+<td>作业正在运行中</td>
+</tr>
+<tr>
+<td><code>CG</code></td>
+<td>COMPLETING</td>
+<td>作业正在收尾（即将完成）</td>
+</tr>
+<tr>
+<td><code>CD</code></td>
+<td>COMPLETED</td>
+<td>作业已成功完成</td>
+</tr>
+<tr>
+<td><code>F</code></td>
+<td>FAILED</td>
+<td>作业因错误失败</td>
+</tr>
+<tr>
+<td><code>TO</code></td>
+<td>TIMEOUT</td>
+<td>作业因超时被终止</td>
+</tr>
+</tbody>
+</table><ul class="simple">
+<li><p>任务执行完毕后会很快从队列中移除，这时 <code class="docutils literal notranslate"><span class="pre">squeue</span></code> 就看不到任务信息了。这时可以通过 <code class="docutils literal notranslate"><span class="pre">sacct</span></code> 查阅任务的审计信息。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 根据需要选择参数</span>
+sacct<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;<span class="w"> </span>-u<span class="w"> </span>&lt;username&gt;
+</pre></div>
+</div>
+</section>
+<section id="id17">
+<h3>取消任务<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">scancel</span></code> 取消正在等待或者执行中的任务。任务将会从任务队列中消失。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel<span class="w"> </span>&lt;JOB_ID&gt;
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id18">
+<h2>文件传输&amp;管理<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>VS Code 支持 Windows 图形化界面的文件拖曳操作，但不显示传输速度和进度等相关信息，因此我们在这里提供一些其他的文件传输&amp;管理工具。</p>
+</div></blockquote>
+<section id="scp">
+<h3>使用 SCP 进行文件传输<a class="headerlink" href="#scp" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>SCP​（Secure Copy Protocol）是一个基于 ​SSH（Secure Shell）​​的安全文件传输协议，用于在本地主机和远程主机之间（或两台远程主机之间）​加密传输文件或目录。</p></li>
+<li><p>正常 Linux 系统都原生支持 SCP 协议；Windows 系统则取决于当前是否已安装 OpenSSH 客户端，而 Windows 10 在 2018 年 4 月更新（版本 1803）中默认安装了 OpenSSH 客户端，只要你的电脑不是古董，大概率可以直接使用。</p></li>
+<li><p>用法示例</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ​从本地复制到远程</span>
+scp<span class="w"> </span>/local/path/file.txt<span class="w"> </span>username@remote_host:/remote/path/
+<span class="c1"># 复制整个目录（递归）</span>
+scp<span class="w"> </span>-r<span class="w"> </span>/local/dir<span class="w"> </span>username@remote_host:/remote/path/
+<span class="c1"># 从远程复制到本地</span>
+scp<span class="w"> </span>username@remote_host:/remote/path/file.txt<span class="w"> </span>/local/path/
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Linux 和 OpenSSH 客户端还支持 SFTP（SSH File Transfer Protocol）协议，提供多功能文件管理，支持断点续传，但比 SCP 稍慢一些，有需要的用户可以自行查阅相关使用方法。</p></li>
+<li><p>如需图形化操作，推荐使用 ​WinSCP​（同时支持 SCP 和 SFTP ）。</p></li>
+</ul>
+</section>
+</section>
+<section id="id19">
+<h2>更多<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+<section id="id20">
+<h3>导航<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="job_scripts.html"><span class="doc">集群任务脚本</span></a></p></li>
+<li><p><a class="reference internal" href="FAQs.html"><span class="doc">常见问题</span></a></p></li>
+<li><p><a class="reference internal" href="useful_softwares.html"><span class="doc">软件安装</span></a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="index.html"
+       title="上一章">← 𝐖ei𝐌ing 𝐂luster User Guide</a>
+  </li>
+  <li class="next">
+    <a href="job_scripts.html"
+       title="下一章">集群任务脚本 →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2025, Umbreller.F.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.9.1.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>
