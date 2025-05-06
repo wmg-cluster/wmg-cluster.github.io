@@ -44,7 +44,7 @@
 .. admonition:: 文档改进计划
    :class: note
 
-   如果发现文档有错漏或者有好的内容（例如一些集群使用技巧或工具）愿意分享，请联系集群管理员或在 GitHub 提交 `Discussions <https://github.com/WeimingGroup/WMC-User-Guide/discussions>`_ 。
+   如果发现文档存在错漏、信息过时需要更新或者有好的内容（例如一些集群使用技巧或工具）愿意分享，请联系集群管理员或在 GitHub 提交 `Discussions <https://github.com/WeimingGroup/WMC-User-Guide/discussions>`_ 。
 
 .. toctree::
    :maxdepth: 3
