@@ -178,7 +178,6 @@
 <li><p><strong>集群管理和作业调度系统</strong>目前采用<strong>SLURM</strong>（<strong>S</strong>imple <strong>L</strong>inux <strong>U</strong>tility for <strong>R</strong>esource <strong>M</strong>anagement）开源框架。</p></li>
 <li><p>WMG计算集群包括一个<strong>登录节点</strong>和若干<strong>计算节点</strong>组成。</p></li>
 <li><p>集群用户直接访问的是<strong>登录节点</strong>，需要通过 Slurm 作业管理器提供的命令行接口向<strong>计算节点</strong>提交计算任务。具体方法参见<a class="reference external" href="#hyperlink1">编写/提交任务脚本</a>。</p></li>
-<li><p>计算集群操作系统为使用 <strong>Linux</strong> 内核的 <code class="docutils literal notranslate"><span class="pre">Ubuntu</span> <span class="pre">20.04</span></code> 操作系统。</p></li>
 <li><p>使用集群需要掌握简单的 <strong>Linux</strong> 命令行操作，网上有很多这方面的教程，也可以使用 GPT 等 LLM 工具帮助生成和编辑目标命令。</p></li>
 </ul>
 </section>
@@ -186,7 +185,7 @@
 <h3>重要注意事项<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong style="color: red;">严禁</strong>在登录节点上直接运行计算任务！！！后果包括但不限于<strong style="color: red;">集群登录节点过载，导致用户集体掉线</strong>。</p></li>
-<li><p><strong style="color: red;">务必</strong>记得使用 <code class="docutils literal notranslate"><span class="pre">srun</span></code> 命令或者通过 <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">--pty</span> <span class="pre">bash</span></code> 启动交互式 Bash 环境！！！</p></li>
+<li><p>启动交互式 Bash 环境<strong style="color: red;">务必</strong>记得使用 <code class="docutils literal notranslate"><span class="pre">srun</span></code> 命令或者通过 <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">--pty</span> <span class="pre">bash</span></code> ！！！</p></li>
 <li><p><strong style="color: red;">注意</strong> 节点计算资源有限，请估计或测试好任务需要的 CPU/memory 资源，谨慎填写任务脚本，避免出现有 GPU 但是其他资源不够导致他人任务长时间排队的情况。</p></li>
 </ul>
 </section>
@@ -269,28 +268,16 @@
 <td>计算</td>
 </tr>
 <tr>
-<td>wmc-argon</td>
-<td>存储服务器</td>
-<td></td>
-<td>存储/域控</td>
-</tr>
-<tr>
 <td>wmc-slave-g16</td>
-<td>Amax 3090 * 10</td>
+<td>Amax 3090 * 8</td>
 <td>48</td>
-<td>计算（长期下线，待处理）</td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g17</td>
-<td>Amax 3090 * 10</td>
+<td>Amax 3090 * 8</td>
 <td>48</td>
-<td>计算（长期下线，待处理）</td>
-</tr>
-<tr>
-<td>wmc-helium</td>
-<td>存储服务器</td>
-<td></td>
-<td>存储</td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g18</td>
@@ -309,6 +296,18 @@
 <td>思腾合力 A6000 * 10</td>
 <td>48</td>
 <td>计算</td>
+</tr>
+<tr>
+<td>wmc-argon</td>
+<td>存储服务器</td>
+<td></td>
+<td>存储</td>
+</tr>
+<tr>
+<td>wmc-helium</td>
+<td>存储服务器</td>
+<td></td>
+<td>存储</td>
 </tr>
 <tr>
 <td>wmc-krypton</td>
@@ -373,17 +372,16 @@ Retype<span class="w"> </span>new<span class="w"> </span>password:<span class="w
 <li><p><code class="docutils literal notranslate"><span class="pre">sinfo</span></code> 命令可以看到哪些分区/计算节点是空闲的（idle）、分配了一部分资源（mix）或者完全占满了（alloc），输出示例如下：</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PARTITION</span> <span class="n">AVAIL</span>  <span class="n">TIMELIMIT</span>  <span class="n">NODES</span>  <span class="n">STATE</span> <span class="n">NODELIST</span>
-<span class="n">cpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span> <span class="n">drain</span><span class="o">*</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g13</span>
 <span class="n">cpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span>  <span class="n">drain</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g7</span>
-<span class="n">cpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">2</span>    <span class="n">mix</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
-<span class="n">cpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">3</span>   <span class="n">idle</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">9</span><span class="o">-</span><span class="mi">11</span><span class="p">]</span>
+<span class="n">cpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">5</span>   <span class="n">idle</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">8</span><span class="o">-</span><span class="mi">12</span><span class="p">]</span>
 <span class="n">cpu4</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span>    <span class="n">mix</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g14</span>
 <span class="n">cpu4</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span>   <span class="n">idle</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g15</span>
-<span class="n">cpu5</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">2</span>  <span class="n">drain</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">16</span><span class="o">-</span><span class="mi">17</span><span class="p">]</span>
-<span class="n">gpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span> <span class="n">drain</span><span class="o">*</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g13</span>
-<span class="n">gpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">3</span>    <span class="n">mix</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
-<span class="n">gpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">4</span>   <span class="n">idle</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">9</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span><span class="mi">15</span><span class="p">]</span>
-<span class="n">gpu4</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">2</span>  <span class="n">drain</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">16</span><span class="o">-</span><span class="mi">17</span><span class="p">]</span>
+<span class="n">cpu5</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span>    <span class="n">mix</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g16</span>
+<span class="n">cpu5</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span>   <span class="n">idle</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g17</span>
+<span class="n">gpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span>    <span class="n">mix</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g14</span>
+<span class="n">gpu3</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">6</span>   <span class="n">idle</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">8</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">]</span>
+<span class="n">gpu4</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span>    <span class="n">mix</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g16</span>
+<span class="n">gpu4</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">1</span>   <span class="n">idle</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g17</span>
 <span class="n">gpu5</span>         <span class="n">up</span>   <span class="n">infinite</span>      <span class="mi">3</span>    <span class="n">mix</span> <span class="n">wmc</span><span class="o">-</span><span class="n">slave</span><span class="o">-</span><span class="n">g</span><span class="p">[</span><span class="mi">18</span><span class="o">-</span><span class="mi">20</span><span class="p">]</span>
 </pre></div>
 </div>

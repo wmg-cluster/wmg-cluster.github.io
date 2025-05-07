@@ -38,7 +38,7 @@
       <div style="margin: 1em 0"></div>
       <span style="color:red; font-weight:bold">严禁</span>在登录节点上直接运行计算任务！！！后果包括但不限于<span style="color:red; font-weight:bold">集群登录节点过载，导致用户集体掉线</span>。
       <div style="margin: 1em 0"></div>
-      <span style="color:red; font-weight:bold">务必</span>记得使用 <code>srun</code> 命令或者通过 <code>srun --pty bash</code> 启动交互式 Bash 环境！！！
+      启动交互式 Bash 环境<span style="color:red; font-weight:bold">务必</span>记得使用 <code>srun</code> 命令或者通过 <code>srun --pty bash</code> ！！！
       <div style="margin: 1em 0"></div>
 
 .. admonition:: 文档改进计划
