@@ -21,8 +21,9 @@
    |                                                            |
    |  Bonvenon! This is the computer cluster of Weiming Group.  |
    |                                                            |
-   |    Tutorial:  https://wmg.ustc.edu.cn/wiki                 |
-   |  Job Status:  https://wmg.ustc.edu.cn/cluster/status.html  |
+   |    Tutorial:  https://wmg-cluster.github.io/               |
+   |                                                            |
+   |  Remember to run commands with 'srun' while debugging!     |
    |____________________________________________________________|
 
 
