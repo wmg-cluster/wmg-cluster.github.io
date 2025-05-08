@@ -21,7 +21,7 @@
    |                                                            |
    |  Bonvenon! This is the computer cluster of Weiming Group.  |
    |                                                            |
-   |    Tutorial:  https://wmg-cluster.github.io/               |
+   |  Tutorial:  https://wmg-cluster.github.io/                 |
    |                                                            |
    |  Remember to run commands with 'srun' while debugging!     |
    |____________________________________________________________|
