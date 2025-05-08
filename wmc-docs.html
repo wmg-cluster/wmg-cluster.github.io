@@ -185,7 +185,7 @@
 <h3>重要注意事项<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong style="color: red;">严禁</strong>在登录节点上直接运行计算任务！！！后果包括但不限于<strong style="color: red;">集群登录节点过载，导致用户集体掉线</strong>。</p></li>
-<li><p>启动交互式 Bash 环境<strong style="color: red;">务必</strong>记得使用 <code class="docutils literal notranslate"><span class="pre">srun</span></code> 命令或者通过 <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">--pty</span> <span class="pre">bash</span></code> ！！！</p></li>
+<li><p><span style="color:red; font-weight:bold">务必</span>记得使用 <code>srun [选项] 可执行程序 [程序参数]</code> 命令提交交互式作业，或者通过 <code>srun --pty bash</code> 启动交互式 Bash 环境再运行可执行程序！！！否则任务会在登录节点上运行！！！</p></li>
 <li><p><strong style="color: red;">注意</strong> 节点计算资源有限，请估计或测试好任务需要的 CPU/memory 资源，谨慎填写任务脚本，避免出现有 GPU 但是其他资源不够导致他人任务长时间排队的情况。</p></li>
 </ul>
 </section>
@@ -446,7 +446,7 @@ salloc<span class="w"> </span>--nodelist<span class="o">=</span>wmc-slave-g12<sp
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>获得计算资源分配后，<strong style="color: red;">务必</strong>使用 <code class="docutils literal notranslate"><span class="pre">srun</span></code> 进行调试，否则<strong style="color: red;">任务会运行在登录节点上，可能导致集群崩溃</strong>。</p></li>
+<li><p>获得计算资源分配后，<strong style="color: red;">务必</strong>使用 <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">[选项]</span> <span class="pre">可执行程序</span> <span class="pre">[程序参数]</span></code> 进行交互式作业调试，否则<strong style="color: red;">任务会运行在登录节点上，可能导致集群崩溃</strong>。</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 调试命令必须以 srun 开头，才能运行在分配的计算节点上</span>
 <span class="c1"># 未加 srun 仍是在登录节点执行命令</span>
@@ -462,7 +462,7 @@ srun<span class="w"> </span>python<span class="w"> </span>your_script.py
 <ul class="simple">
 <li><p><strong>推荐</strong>在已分配的 Slurm 计算节点上，直接启动一个交互式 Bash Shell ，这样在后续调试中可以不用 <code class="docutils literal notranslate"><span class="pre">srun</span></code> 命令，防止不小心忘记。</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 分配临时节点启动交互式 Bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在分配临时节点上启动交互式 Bash</span>
 srun<span class="w"> </span>--pty<span class="w"> </span>bash
 <span class="c1"># 进入交互式环境后可自由执行命令，不需要再使用 srun</span>
 nvidia-smi
