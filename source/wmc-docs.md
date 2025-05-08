@@ -9,13 +9,12 @@
 - **集群管理和作业调度系统**目前采用**SLURM**（**S**imple **L**inux **U**tility for **R**esource **M**anagement）开源框架。
 - WMG计算集群包括一个**登录节点**和若干**计算节点**组成。
 - 集群用户直接访问的是**登录节点**，需要通过 Slurm 作业管理器提供的命令行接口向**计算节点**提交计算任务。具体方法参见[编写/提交任务脚本](#hyperlink1)。
-- 计算集群操作系统为使用 **Linux** 内核的 `Ubuntu 20.04` 操作系统。
 - 使用集群需要掌握简单的 **Linux** 命令行操作，网上有很多这方面的教程，也可以使用 GPT 等 LLM 工具帮助生成和编辑目标命令。
 
 ### 重要注意事项
 
 - <strong style="color: red;">严禁</strong>在登录节点上直接运行计算任务！！！后果包括但不限于<strong style="color: red;">集群登录节点过载，导致用户集体掉线</strong>。
-- <strong style="color: red;">务必</strong>记得使用 `srun` 命令或者通过 `srun --pty bash` 启动交互式 Bash 环境！！！
+- 启动交互式 Bash 环境<strong style="color: red;">务必</strong>记得使用 `srun` 命令或者通过 `srun --pty bash` ！！！
 - <strong style="color: red;">注意</strong> 节点计算资源有限，请估计或测试好任务需要的 CPU/memory 资源，谨慎填写任务脚本，避免出现有 GPU 但是其他资源不够导致他人任务长时间排队的情况。
 
 ## 集群硬件配置
@@ -36,13 +35,13 @@
 | wmc-slave-g13        | 2080Ti * 8                      |   28    | 退役                 |
 | wmc-slave-g14        | 2080Ti * 10                     |    32   | 计算                 |
 | wmc-slave-g15        | 2080Ti * 10                     |    32   | 计算                 |
-| wmc-argon            | 存储服务器                     |         | 存储/域控            |
-| wmc-slave-g16        | Amax 3090 * 10                  |   48    | 计算（长期下线，待处理）|
-| wmc-slave-g17        | Amax 3090 * 10                  |   48    | 计算（长期下线，待处理）|
-| wmc-helium           | 存储服务器                       |         | 存储                 |
+| wmc-slave-g16        | Amax 3090 * 8                   |   48    | 计算                 |
+| wmc-slave-g17        | Amax 3090 * 8                   |   48    | 计算                 |
 | wmc-slave-g18        | 思腾合力 A6000 * 10              |   48    | 计算                 |
 | wmc-slave-g19        | 思腾合力 A6000 * 10              |   48    | 计算                 |
 | wmc-slave-g20        | 思腾合力 A6000 * 10              |   48    | 计算                 |
+| wmc-argon            | 存储服务器                     |         | 存储               |
+| wmc-helium           | 存储服务器                       |         | 存储                 |
 | wmc-krypton          | 思腾合力存储服务器             |         | 存储                 |
 
 ## 登录集群
@@ -94,17 +93,16 @@ Host wmg-cluster
 - `sinfo` 命令可以看到哪些分区/计算节点是空闲的（idle）、分配了一部分资源（mix）或者完全占满了（alloc），输出示例如下：
 ```
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-cpu3         up   infinite      1 drain* wmc-slave-g13
 cpu3         up   infinite      1  drain wmc-slave-g7
-cpu3         up   infinite      2    mix wmc-slave-g[8,12]
-cpu3         up   infinite      3   idle wmc-slave-g[9-11]
+cpu3         up   infinite      5   idle wmc-slave-g[8-12]
 cpu4         up   infinite      1    mix wmc-slave-g14
 cpu4         up   infinite      1   idle wmc-slave-g15
-cpu5         up   infinite      2  drain wmc-slave-g[16-17]
-gpu3         up   infinite      1 drain* wmc-slave-g13
-gpu3         up   infinite      3    mix wmc-slave-g[8,12,14]
-gpu3         up   infinite      4   idle wmc-slave-g[9-11,15]
-gpu4         up   infinite      2  drain wmc-slave-g[16-17]
+cpu5         up   infinite      1    mix wmc-slave-g16
+cpu5         up   infinite      1   idle wmc-slave-g17
+gpu3         up   infinite      1    mix wmc-slave-g14
+gpu3         up   infinite      6   idle wmc-slave-g[8-12,15]
+gpu4         up   infinite      1    mix wmc-slave-g16
+gpu4         up   infinite      1   idle wmc-slave-g17
 gpu5         up   infinite      3    mix wmc-slave-g[18-20]
 ```
 - 通过 `-o` 参数自定义格式可以查看更多信息，例如：
