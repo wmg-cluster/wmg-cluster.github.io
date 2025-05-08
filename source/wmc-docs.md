@@ -14,7 +14,7 @@
 ### 重要注意事项
 
 - <strong style="color: red;">严禁</strong>在登录节点上直接运行计算任务！！！后果包括但不限于<strong style="color: red;">集群登录节点过载，导致用户集体掉线</strong>。
-- 启动交互式 Bash 环境<strong style="color: red;">务必</strong>记得使用 `srun` 命令或者通过 `srun --pty bash` ！！！
+- <span style="color:red; font-weight:bold">务必</span>记得使用 <code>srun [选项] 可执行程序 [程序参数]</code> 命令提交交互式作业，或者通过 <code>srun --pty bash</code> 启动交互式 Bash 环境再运行可执行程序！！！否则任务会在登录节点上运行！！！
 - <strong style="color: red;">注意</strong> 节点计算资源有限，请估计或测试好任务需要的 CPU/memory 资源，谨慎填写任务脚本，避免出现有 GPU 但是其他资源不够导致他人任务长时间排队的情况。
 
 ## 集群硬件配置
@@ -156,7 +156,7 @@ NodeName=wmc-slave-g20 Arch=x86_64 CoresPerSocket=24
 #   --gres gpu:1              # 分配 1 块目标 GPU
 salloc --nodelist=wmc-slave-g12 -p gpu3 -N 1 -c 4 --mem 30G --gres gpu:1
 ```
-- 获得计算资源分配后，<strong style="color: red;">务必</strong>使用 `srun` 进行调试，否则<strong style="color: red;">任务会运行在登录节点上，可能导致集群崩溃</strong>。
+- 获得计算资源分配后，<strong style="color: red;">务必</strong>使用 `srun [选项] 可执行程序 [程序参数]` 进行交互式作业调试，否则<strong style="color: red;">任务会运行在登录节点上，可能导致集群崩溃</strong>。
 ```bash
 # 调试命令必须以 srun 开头，才能运行在分配的计算节点上
 # 未加 srun 仍是在登录节点执行命令
@@ -170,7 +170,7 @@ srun python your_script.py
 ```
 - **推荐**在已分配的 Slurm 计算节点上，直接启动一个交互式 Bash Shell ，这样在后续调试中可以不用 `srun` 命令，防止不小心忘记。
 ```bash
-# 分配临时节点启动交互式 Bash
+# 在分配临时节点上启动交互式 Bash
 srun --pty bash
 # 进入交互式环境后可自由执行命令，不需要再使用 srun
 nvidia-smi
