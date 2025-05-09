@@ -1,5 +1,20 @@
 # 集群任务脚本
 
+## 指定 CUDA 版本
+
+- 如果需要指定任务运行的 CUDA 版本，可以在 bash 脚本中添加以下命令：
+
+```bash
+# 修改环境变量
+export CUDA_HOME=/app/cuda/cuda-11.8
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+# 验证环境变量
+echo $CUDA_HOME      # 应输出 /app/cuda/cuda-11.8
+which nvcc           # 应显示 /app/cuda/cuda-11.8/bin/nvcc
+nvcc --version       # 确认版本是否正确
+```
+
 ## 任务信息邮件通知
 
 - 为了方便监控任务运行状况，可以添加一个自动发送邮件的 python 脚本。一共需要使用两个邮箱，一个作为发送方，一个作为接收方。相关 python 依赖请自行安装。
