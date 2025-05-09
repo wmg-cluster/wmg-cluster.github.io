@@ -56,6 +56,7 @@
    wmc-docs.md
    job_scripts.md
    useful_softwares.md
+   add.md
    FAQs.md
 
 ..  Indices and tables
