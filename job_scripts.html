@@ -91,6 +91,8 @@
             
               <ul>
                 
+                  <li class="toctree-l2"><a href="#cuda" class="reference internal">指定 CUDA 版本</a></li>
+                
                   <li class="toctree-l2"><a href="#id2" class="reference internal">任务信息邮件通知</a></li>
                 
                   <li class="toctree-l2"><a href="#id3" class="reference internal">多卡任务通信端口</a></li>
@@ -151,6 +153,22 @@
             
   <section id="id1">
 <h1>集群任务脚本<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<section id="cuda">
+<h2>指定 CUDA 版本<a class="headerlink" href="#cuda" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>如果需要指定任务运行的 CUDA 版本，可以在 bash 脚本中添加以下命令：</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 修改环境变量</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_HOME</span><span class="o">=</span>/app/cuda/cuda-11.8
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
+<span class="c1"># 验证环境变量</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$CUDA_HOME</span><span class="w">      </span><span class="c1"># 应输出 /app/cuda/cuda-11.8</span>
+which<span class="w"> </span>nvcc<span class="w">           </span><span class="c1"># 应显示 /app/cuda/cuda-11.8/bin/nvcc</span>
+nvcc<span class="w"> </span>--version<span class="w">       </span><span class="c1"># 确认版本是否正确</span>
+</pre></div>
+</div>
+</section>
 <section id="id2">
 <h2>任务信息邮件通知<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <ul class="simple">
