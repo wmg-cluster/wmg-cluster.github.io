@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html  lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <title>集群使用补充说明</title>
+    
+          <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script src="_static/documentation_options.js?v=5a3fd9cb"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=beaddf03"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="_static/theme-vendors.js"></script> -->
+      <script src="_static/theme.js" defer></script>
+    
+  <link rel="index" title="索引" href="genindex.html" />
+  <link rel="search" title="搜索" href="search.html" />
+  <link rel="next" title="常见问题" href="FAQs.html" />
+  <link rel="prev" title="软件安装" href="useful_softwares.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">wmc-docs</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">快速搜索</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="搜索" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#ei-ing-luster-user-guide">目录</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="wmc-docs.html" class="reference internal ">WMG集群使用指南</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="job_scripts.html" class="reference internal ">集群任务脚本</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="useful_softwares.html" class="reference internal ">软件安装</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">集群使用补充说明</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#id2" class="reference internal">1. 存储类型</a></li>
+                
+                  <li class="toctree-l2"><a href="#module" class="reference internal">2. 使用 module 加载软件环境</a></li>
+                
+                  <li class="toctree-l2"><a href="#id3" class="reference internal">3. 容器</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="FAQs.html" class="reference internal ">常见问题</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>集群使用补充说明</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="useful_softwares.html"
+       title="上一章">← 软件安装</a>
+  </li>
+  <li class="next">
+    <a href="FAQs.html"
+       title="下一章">常见问题 →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section id="id1">
+<h1>集群使用补充说明<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<section id="id2">
+<h2>1. 存储类型<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>集群用户的个人目录为 <code class="docutils literal notranslate"><span class="pre">/public/&lt;username&gt;</span></code>, 默认存储池为 <code class="docutils literal notranslate"><span class="pre">base_pool</span></code>。</p>
+<p>全部ceph存储池：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">base_pool</span></code> (HDD, 无数据保护)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">metapool</span></code> (SSD, 2x冗余，仅存放元数据)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssd_store_pool</span></code> (SSD, 无数据保护)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ecpool</span></code> (HDD, 3+1纠错)</p></li>
+</ul>
+<p>可以通过 <code class="docutils literal notranslate"><span class="pre">setfattr</span></code> 设定空目录的存储池 (详见: <a class="reference external" href="https://docs.ceph.com/en/latest/cephfs/file-layouts/">CephFS File Layouts</a>)</p>
+<p>例如:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>my_precious_data
+setfattr<span class="w"> </span>-n<span class="w"> </span>ceph.dir.layout.pool<span class="w"> </span>-v<span class="w"> </span>ecpool<span class="w"> </span>my_precious_data
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">my_precious_data</span></code> 目录下的文件会存储在 <code class="docutils literal notranslate"><span class="pre">ecpool</span></code>。</p>
+</section>
+<section id="module">
+<h2>2. 使用 module 加载软件环境<a class="headerlink" href="#module" title="Link to this heading">¶</a></h2>
+<p>集群中一部分预装的软件，或者环境配置比较复杂、或者安装在非标准目录、或者安装了多个版本相互冲突，因此默认没有加载。需要通过 <code class="docutils literal notranslate"><span class="pre">module</span></code> 命令手动加载相应的软件模块。</p>
+<p>例如，加载 Matlab:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>matlab<span class="w">                            </span><span class="c1"># 未加载 Matlab 模块</span>
+-bash:<span class="w"> </span>matlab:<span class="w"> </span><span class="nb">command</span><span class="w"> </span>not<span class="w"> </span>found
+
+$<span class="w"> </span>module<span class="w"> </span>avail<span class="w">                      </span><span class="c1"># 查看系统中所有软件模块</span>
+-------------------------<span class="w"> </span>/public/.shared/modulefiles<span class="w"> </span>--------------------------
+<span class="w">  </span>caffe/1.0<span class="w">    </span>matlab/R2017a<span class="w"> </span><span class="o">(</span>D<span class="o">)</span><span class="w">    </span>matlab/R2018b
+
+$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>matlab/R2017a<span class="w">        </span><span class="c1"># 加载 Matlab R2017a 模块</span>
+$<span class="w"> </span>matlab<span class="w"> </span>-nosplash<span class="w"> </span>-nodesktop
+MATLAB<span class="w"> </span>is<span class="w"> </span>selecting<span class="w"> </span>SOFTWARE<span class="w"> </span>OPENGL<span class="w"> </span>rendering.
+......
+
+$<span class="w"> </span>module<span class="w"> </span>unload<span class="w"> </span>matlab/R2017a<span class="w">      </span><span class="c1"># 卸载模块</span>
+</pre></div>
+</div>
+<p>加载 CUDA 12.4:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>cuda/12.4
+</pre></div>
+</div>
+<p>在批处理脚本中使用包括 Matlab 在内的未默认加载的软件时，也需要先加载对应模块。</p>
+</section>
+<section id="id3">
+<h2>3. 容器<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>~~容器, 由于集群使用的nft作为防火墙，存在与docker的兼容性问题 (<a class="reference external" href="https://www.reddit.com/r/docker/comments/1fcvvfc/docker_and_nftables_is_there_a_way_linux/">Docker and nftables, is there a way linux?</a>), 因此仅在g20装有docker,如果需要container，可以使用singularity~~</p>
+<p><strong>注意</strong>: Singularity 长期未更新，现在已经几乎不可用。</p>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="useful_softwares.html"
+       title="上一章">← 软件安装</a>
+  </li>
+  <li class="next">
+    <a href="FAQs.html"
+       title="下一章">常见问题 →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2025, Umbreller.F.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.9.1.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>
