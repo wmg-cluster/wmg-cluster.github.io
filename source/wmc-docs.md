@@ -35,7 +35,7 @@
 | wmc-slave-g13        | 2080Ti * 8                      |   28    | 退役                 |
 | wmc-slave-g14        | 2080Ti * 10                     |    32   | 计算                 |
 | wmc-slave-g15        | 2080Ti * 10                     |    32   | 计算                 |
-| wmc-slave-g16        | Amax 3090 * 8                   |   48    | 计算                 |
+| wmc-slave-g16        | Amax 3090 * 7                   |   48    | 计算                 |
 | wmc-slave-g17        | Amax 3090 * 7                   |   48    | 计算                 |
 | wmc-slave-g18        | 思腾合力 A6000 * 10              |   48    | 计算                 |
 | wmc-slave-g19        | 思腾合力 A6000 * 10              |   48    | 计算                 |
