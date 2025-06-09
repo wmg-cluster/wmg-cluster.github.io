@@ -627,9 +627,13 @@ sbatch<span class="w"> </span>test_sbatch.sh
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">squeue</span></code> 命令也支持通过 <code class="docutils literal notranslate"><span class="pre">-o</span></code> 参数自定义格式，示例如下。每个 %.Nx 表示一个字段，其中： N 是字段的固定宽度（字符数），不足时填充空格，超过时截断。 x 是字段类型标识符。</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%.10i %.9P %.50j %.14u %.12T %.14M %.18R %.6C %.14b&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%.10i %.9P %.50j %.14u %.12T %.14M %.18R %.6C %.14b %.12m&quot;</span>
 <span class="c1"># 输出格式示例</span>
-<span class="w">     </span>JOBID<span class="w"> </span>PARTITION<span class="w">                                               </span>NAME<span class="w">           </span>USER<span class="w">        </span>STATE<span class="w">           </span>TIME<span class="w">   </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span><span class="w">   </span>CPUS<span class="w">  </span>TRES_PER_NODE
+<span class="w">     </span>JOBID<span class="w"> </span>PARTITION<span class="w">                                               </span>NAME<span class="w">           </span>USER<span class="w">        </span>STATE<span class="w">           </span>TIME<span class="w">   </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span><span class="w">   </span>CPUS<span class="w">  </span>TRES_PER_NODE<span class="w">   </span>MIN_MEMORY
+<span class="w">    </span><span class="m">252990</span><span class="w">      </span>gpu5<span class="w">                                            </span>Test.sh<span class="w">    </span>xxxxxxxxxxx<span class="w">      </span>PENDING<span class="w">           </span><span class="m">0</span>:00<span class="w">        </span><span class="o">(</span>Resources<span class="o">)</span><span class="w">      </span><span class="m">4</span><span class="w">          </span>gpu:1<span class="w">          </span>40G
+<span class="w">    </span><span class="m">252996</span><span class="w">      </span>gpu5<span class="w">                                      </span>sbatch_0_0.sh<span class="w">   </span>xxxxxxxxxxxx<span class="w">      </span>PENDING<span class="w">           </span><span class="m">0</span>:00<span class="w">         </span><span class="o">(</span>Priority<span class="o">)</span><span class="w">      </span><span class="m">4</span><span class="w">          </span>gpu:1<span class="w">          </span>10G
+<span class="w">    </span><span class="m">252498</span><span class="w">      </span>gpu5<span class="w">                                      </span>train_cond.sh<span class="w">  </span>xxxxxxxxxxxxx<span class="w">      </span>RUNNING<span class="w">     </span><span class="m">4</span>-01:53:14<span class="w">      </span>wmc-slave-g19<span class="w">     </span><span class="m">16</span><span class="w">          </span>gpu:4<span class="w">          </span>32G
+<span class="w">    </span><span class="m">252596</span><span class="w">      </span>cpu3<span class="w">                                            </span>run2.sh<span class="w">          </span>xxxxx<span class="w">      </span>RUNNING<span class="w">     </span><span class="m">3</span>-14:47:09<span class="w">       </span>wmc-slave-g9<span class="w">     </span><span class="m">12</span><span class="w">            </span>N/A<span class="w">          </span>20G
 </pre></div>
 </div>
 <ul class="simple">
@@ -682,6 +686,10 @@ sbatch<span class="w"> </span>test_sbatch.sh
 <tr>
 <td><strong>TRES_PER_NODE</strong></td>
 <td>每节点可跟踪资源（Trackable RESources per Node），通常为任务分配的 GPU 数目</td>
+</tr>
+<tr>
+<td><strong>MIN_MEMORY</strong></td>
+<td>任务请求的最小内存量</td>
 </tr>
 </tbody>
 </table><ul class="simple">

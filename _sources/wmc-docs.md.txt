@@ -301,9 +301,13 @@ JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 - `squeue` 命令也支持通过 `-o` 参数自定义格式，示例如下。每个 %.Nx 表示一个字段，其中： N 是字段的固定宽度（字符数），不足时填充空格，超过时截断。 x 是字段类型标识符。
   
 ```bash
-squeue -o "%.10i %.9P %.50j %.14u %.12T %.14M %.18R %.6C %.14b"
+squeue -o "%.10i %.9P %.50j %.14u %.12T %.14M %.18R %.6C %.14b %.12m"
 # 输出格式示例
-     JOBID PARTITION                                               NAME           USER        STATE           TIME   NODELIST(REASON)   CPUS  TRES_PER_NODE
+     JOBID PARTITION                                               NAME           USER        STATE           TIME   NODELIST(REASON)   CPUS  TRES_PER_NODE   MIN_MEMORY
+    252990      gpu5                                            Test.sh    xxxxxxxxxxx      PENDING           0:00        (Resources)      4          gpu:1          40G
+    252996      gpu5                                      sbatch_0_0.sh   xxxxxxxxxxxx      PENDING           0:00         (Priority)      4          gpu:1          10G
+    252498      gpu5                                      train_cond.sh  xxxxxxxxxxxxx      RUNNING     4-01:53:14      wmc-slave-g19     16          gpu:4          32G
+    252596      cpu3                                            run2.sh          xxxxx      RUNNING     3-14:47:09       wmc-slave-g9     12            N/A          20G
 ```
 
 - 输出解析
@@ -320,6 +324,7 @@ squeue -o "%.10i %.9P %.50j %.14u %.12T %.14M %.18R %.6C %.14b"
 | **NODELIST(REASON)** | 分配的节点列表（如已运行）或未运行的原因（如 `Resources`、`Priority`） |
 | **CPUS**          |​	任务分配的 CPU 核心数量                                            |
 | **TRES_PER_NODE** | 每节点可跟踪资源（Trackable RESources per Node），通常为任务分配的 GPU 数目|
+| **MIN_MEMORY**    | 任务请求的最小内存量                                                 |
 
 - 常见任务状态
 
