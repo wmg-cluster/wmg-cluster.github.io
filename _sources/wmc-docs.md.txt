@@ -23,26 +23,26 @@
 
 - 集群目前由登录节点、存储节点和计算节点组成，登录节点只负责 SLURM 控制/登录功能，<strong style="color: red;">严禁</strong>在登录节点上运行计算任务。
 
-| 节点名               | 型号/配置                      | CPU数目 | 负责功能             |
-|----------------------|-------------------------------|---------|----------------------|
-| wmc-slave-g6         | AMAX SYS-4029GP-TRT 1080Ti * 8  |         | SLURM 控制/登录       |
-| wmc-slave-g7         | AMAX SYS-4029GP-TRT 1080Ti * 8  |   28    | 计算                 |
-| wmc-slave-g8         | 思腾合力 2080Ti * 8              |   28    | 计算                 |
-| wmc-slave-g9         | 思腾合力 2080Ti * 8              |   28    | 计算                 |
-| wmc-slave-g10        | 2080Ti * 8                      |   28    | 计算                 |
-| wmc-slave-g11        | 2080Ti * 8                      |   28    | 计算                 |
-| wmc-slave-g12        | 2080Ti * 8                      |   28    | 计算                 |
-| wmc-slave-g13        | 2080Ti * 8                      |   28    | 退役                 |
-| wmc-slave-g14        | 2080Ti * 10                     |    32   | 计算                 |
-| wmc-slave-g15        | 2080Ti * 10                     |    32   | 计算                 |
-| wmc-slave-g16        | Amax 3090 * 7                   |   48    | 计算                 |
-| wmc-slave-g17        | Amax 3090 * 6                   |   48    | 计算                 |
-| wmc-slave-g18        | 思腾合力 A6000 * 10              |   48    | 计算                 |
-| wmc-slave-g19        | 思腾合力 A6000 * 10              |   48    | 计算                 |
-| wmc-slave-g20        | 思腾合力 A6000 * 10              |   48    | 计算                 |
-| wmc-argon            | 存储服务器                     |         | 存储               |
-| wmc-helium           | 存储服务器                       |         | 存储                 |
-| wmc-krypton          | 思腾合力存储服务器             |         | 存储                 |
+| 节点名               | 型号/配置                      | CPU数目 | 负责功能             | 系统 |
+|----------------------|-------------------------------|---------|----------------------|-------------|
+| wmc-slave-g6         | AMAX SYS-4029GP-TRT 1080Ti * 8  |         | SLURM 控制/登录       | Ubuntu 20.04.6 LTS |
+| wmc-slave-g7         | AMAX SYS-4029GP-TRT 1080Ti * 8  |   28    | 计算                 | Ubuntu 18.04.4 LTS |
+| wmc-slave-g8         | 思腾合力 2080Ti * 8              |   28    | 计算                 | Ubuntu 20.04.6 LTS |
+| wmc-slave-g9         | 思腾合力 2080Ti * 8              |   28    | 计算                 | Ubuntu 18.04.4 LTS |
+| wmc-slave-g10        | 2080Ti * 8                      |   28    | 计算                 | Ubuntu 18.04.4 LTS |
+| wmc-slave-g11        | 2080Ti * 8                      |   28    | 计算                 | Ubuntu 18.04.4 LTS |
+| wmc-slave-g12        | 2080Ti * 8                      |   28    | 计算                 | Ubuntu 18.04.4 LTS |
+| wmc-slave-g13        | 2080Ti * 8                      |   28    | 退役                 | |
+| wmc-slave-g14        | 2080Ti * 10                     |    32   | 计算                 | Ubuntu 18.04.4 LTS |
+| wmc-slave-g15        | 2080Ti * 10                     |    32   | 计算                 | Ubuntu 18.04.4 LTS |
+| wmc-slave-g16        | Amax 3090 * 7                   |   48    | 计算                 | Ubuntu 18.04.5 LTS |
+| wmc-slave-g17        | Amax 3090 * 6                   |   48    | 计算                 | Ubuntu 18.04.6 LTS |
+| wmc-slave-g18        | 思腾合力 A6000 * 10              |   48    | 计算                 | Ubuntu 18.04.6 LTS |
+| wmc-slave-g19        | 思腾合力 A6000 * 10              |   48    | 计算                 | Ubuntu 20.04.6 LTS |
+| wmc-slave-g20        | 思腾合力 A6000 * 10              |   48    | 计算                 | Ubuntu 18.04.6 LTS |
+| wmc-argon            | 存储服务器                     |         | 存储               | Debian GNU/Linux 10 (buster) |
+| wmc-helium           | 存储服务器                       |         | 存储                 | Ubuntu 20.04.2 LTS |
+| wmc-krypton          | 思腾合力存储服务器             |         | 存储                 | Ubuntu 20.04.2 LTS |
 
 ## 登录集群
 
