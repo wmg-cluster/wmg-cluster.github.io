@@ -17,32 +17,55 @@
 - <span style="color:red; font-weight:bold">务必</span>记得使用 <code>srun [选项] 可执行程序 [程序参数]</code> 命令提交交互式作业，或者通过 <code>srun --pty bash</code> 启动交互式 Bash 环境再运行可执行程序！！！否则任务会在登录节点上运行！！！
 - <strong style="color: red;">注意</strong> 节点计算资源有限，请估计或测试好任务需要的 CPU/memory 资源，谨慎填写任务脚本，避免出现有 GPU 但是其他资源不够导致他人任务长时间排队的情况。
 
-## 集群硬件配置
-
-### 集群节点清单
+## 集群节点清单
 
 - 集群目前由登录节点、存储节点和计算节点组成，登录节点只负责 SLURM 控制/登录功能，<strong style="color: red;">严禁</strong>在登录节点上运行计算任务。
 
-| 节点名               | 型号/配置                      | CPU数目 | 负责功能             | 操作系统 |
-|----------------------|-------------------------------|---------|----------------------|-------------|
-| wmc-slave-g6         | AMAX SYS-4029GP-TRT 1080Ti * 8  |         | SLURM 控制/登录       | Ubuntu 20.04.6 LTS |
-| wmc-slave-g7         | AMAX SYS-4029GP-TRT 1080Ti * 8  |   28    | 计算                 | Ubuntu 18.04.4 LTS |
-| wmc-slave-g8         | 思腾合力 2080Ti * 8              |   28    | 计算                 | Ubuntu 20.04.6 LTS |
-| wmc-slave-g9         | 思腾合力 2080Ti * 8              |   28    | 计算                 | Ubuntu 18.04.4 LTS |
-| wmc-slave-g10        | 2080Ti * 8                      |   28    | 计算                 | Ubuntu 18.04.4 LTS |
-| wmc-slave-g11        | 2080Ti * 8                      |   28    | 计算                 | Ubuntu 18.04.4 LTS |
-| wmc-slave-g12        | 2080Ti * 8                      |   28    | 计算                 | Ubuntu 18.04.4 LTS |
-| wmc-slave-g13        | 2080Ti * 8                      |   28    | 退役                 | |
-| wmc-slave-g14        | 2080Ti * 10                     |    32   | 计算                 | Ubuntu 18.04.4 LTS |
-| wmc-slave-g15        | 2080Ti * 10                     |    32   | 计算                 | Ubuntu 18.04.4 LTS |
-| wmc-slave-g16        | Amax 3090 * 7                   |   48    | 计算                 | Ubuntu 18.04.5 LTS |
-| wmc-slave-g17        | Amax 3090 * 6                   |   48    | 计算                 | Ubuntu 18.04.6 LTS |
-| wmc-slave-g18        | 思腾合力 A6000 * 10              |   48    | 计算                 | Ubuntu 18.04.6 LTS |
-| wmc-slave-g19        | 思腾合力 A6000 * 10              |   48    | 计算                 | Ubuntu 20.04.6 LTS |
-| wmc-slave-g20        | 思腾合力 A6000 * 10              |   48    | 计算                 | Ubuntu 18.04.6 LTS |
-| wmc-argon            | 存储服务器                     |         | 存储               | Debian 10 (buster) |
-| wmc-helium           | 存储服务器                       |         | 存储                 | Ubuntu 20.04.2 LTS |
-| wmc-krypton          | 思腾合力存储服务器             |         | 存储                 | Ubuntu 20.04.2 LTS |
+### 节点硬件配置
+
+| 节点名               | 型号/配置                        | CPU数目  | 负责功能             |
+|----------------------|---------------------------------|---------|----------------------|
+| wmc-slave-g6         | AMAX SYS-4029GP-TRT 1080Ti * 8  |         | SLURM 控制/登录       |
+| wmc-slave-g7         | AMAX SYS-4029GP-TRT 1080Ti * 8  |   28    | 计算                 |
+| wmc-slave-g8         | 思腾合力 2080Ti * 8              |   28    | 计算                 |
+| wmc-slave-g9         | 思腾合力 2080Ti * 8              |   28    | 计算                 |
+| wmc-slave-g10        | 2080Ti * 8                      |   28    | 计算                 |
+| wmc-slave-g11        | 2080Ti * 8                      |   28    | 计算                 |
+| wmc-slave-g12        | 2080Ti * 8                      |   28    | 计算                 |
+| wmc-slave-g13        | 2080Ti * 8                      |   28    | 退役                 |
+| wmc-slave-g14        | 2080Ti * 10                     |    32   | 计算                 |
+| wmc-slave-g15        | 2080Ti * 10                     |    32   | 计算                 |
+| wmc-slave-g16        | Amax 3090 * 7                   |   48    | 计算                 |
+| wmc-slave-g17        | Amax 3090 * 6                   |   48    | 计算                 |
+| wmc-slave-g18        | 思腾合力 A6000 * 10              |   48    | 计算                 |
+| wmc-slave-g19        | 思腾合力 A6000 * 10              |   48    | 计算                 |
+| wmc-slave-g20        | 思腾合力 A6000 * 10              |   48    | 计算                 |
+| wmc-argon            | 存储服务器                       |         | 存储                 |
+| wmc-helium           | 存储服务器                       |         | 存储                 |
+| wmc-krypton          | 思腾合力存储服务器                |         | 存储                 |
+
+### 节点软件配置
+
+| 节点名               | 操作系统            | GPU 驱动版本   |
+|----------------------|--------------------|---------------|
+| wmc-slave-g6         | Ubuntu 20.04.6 LTS | |
+| wmc-slave-g7         | Ubuntu 18.04.4 LTS | |
+| wmc-slave-g8         | Ubuntu 20.04.6 LTS | |
+| wmc-slave-g9         | Ubuntu 20.04.6 LTS | 535.230.02    |
+| wmc-slave-g10        | Ubuntu 20.04.6 LTS | 535.230.02    |
+| wmc-slave-g11        | Ubuntu 18.04.4 LTS | |
+| wmc-slave-g12        | Ubuntu 18.04.4 LTS | |
+| wmc-slave-g13        |                    | |
+| wmc-slave-g14        | Ubuntu 18.04.4 LTS | |
+| wmc-slave-g15        | Ubuntu 18.04.4 LTS | |
+| wmc-slave-g16        | Ubuntu 18.04.5 LTS | |
+| wmc-slave-g17        | Ubuntu 18.04.6 LTS | |
+| wmc-slave-g18        | Ubuntu 18.04.6 LTS | |
+| wmc-slave-g19        | Ubuntu 20.04.6 LTS | |
+| wmc-slave-g20        | Ubuntu 18.04.6 LTS | |
+| wmc-argon            | Debian 10 (buster) | |
+| wmc-helium           | Ubuntu 20.04.2 LTS | |
+| wmc-krypton          | Ubuntu 20.04.2 LTS | |
 
 ## 登录集群
 
