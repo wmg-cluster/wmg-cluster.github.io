@@ -86,21 +86,23 @@
                 
                   <li class="toctree-l2"><a href="#id4" class="reference internal">集群节点清单</a></li>
                 
-                  <li class="toctree-l2"><a href="#id7" class="reference internal">登录集群</a></li>
+                  <li class="toctree-l2"><a href="#id8" class="reference internal">登录集群</a></li>
                 
-                  <li class="toctree-l2"><a href="#id10" class="reference internal">查看集群/节点状态</a></li>
+                  <li class="toctree-l2"><a href="#id11" class="reference internal">查看集群/节点状态</a></li>
                 
                   <li class="toctree-l2"><a href="#debug" class="reference internal">调试节点申请&远程 debug</a></li>
                 
-                  <li class="toctree-l2"><a href="#id14" class="reference internal">环境搭建</a></li>
+                  <li class="toctree-l2"><a href="#id15" class="reference internal">环境搭建</a></li>
                 
                   <li class="toctree-l2"><a href="#cuda" class="reference internal">CUDA 版本问题</a></li>
                 
-                  <li class="toctree-l2"><a href="#id17" class="reference internal">计算任务管理</a></li>
+                  <li class="toctree-l2"><a href="#id18" class="reference internal">计算任务管理</a></li>
                 
-                  <li class="toctree-l2"><a href="#id19" class="reference internal">文件传输&管理</a></li>
+                  <li class="toctree-l2"><a href="#id20" class="reference internal">文件传输&管理</a></li>
                 
-                  <li class="toctree-l2"><a href="#id20" class="reference internal">更多</a></li>
+                  <li class="toctree-l2"><a href="#id21" class="reference internal">常用命令</a></li>
+                
+                  <li class="toctree-l2"><a href="#id22" class="reference internal">更多</a></li>
                 
               </ul>
             
@@ -210,119 +212,157 @@
 <thead>
 <tr>
 <th>节点名</th>
-<th>型号/配置</th>
-<th>CPU数目</th>
+<th>型号</th>
+<th>厂商</th>
+<th>CPU 配置</th>
+<th>GPU 配置</th>
 <th>负责功能</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>wmc-slave-g6</td>
-<td>AMAX SYS-4029GP-TRT 1080Ti * 8</td>
-<td></td>
+<td>SYS-4029GP-TRT</td>
+<td>AMAX</td>
+<td>Xeon Gold 5120 28核</td>
+<td>1080Ti * 8</td>
 <td>SLURM 控制/登录</td>
 </tr>
 <tr>
 <td>wmc-slave-g7</td>
-<td>AMAX SYS-4029GP-TRT 1080Ti * 8</td>
-<td>28</td>
+<td>SYS-4029GP-TRT</td>
+<td>AMAX</td>
+<td>Xeon Gold 5120 28核</td>
+<td>1080Ti * 8</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g8</td>
-<td>思腾合力 2080Ti * 8</td>
+<td></td>
+<td>思腾合力</td>
 <td>28</td>
+<td>2080Ti * 8</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g9</td>
-<td>思腾合力 2080Ti * 8</td>
+<td></td>
+<td>思腾合力</td>
 <td>28</td>
+<td>2080Ti * 8</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g10</td>
+<td>SYS-4029GP-TRT</td>
+<td></td>
+<td>Xeon Gold 5120 28核</td>
 <td>2080Ti * 8</td>
-<td>28</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g11</td>
-<td>2080Ti * 8</td>
+<td></td>
+<td></td>
 <td>28</td>
+<td>2080Ti * 8</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g12</td>
-<td>2080Ti * 8</td>
+<td></td>
+<td></td>
 <td>28</td>
+<td>2080Ti * 8</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g13</td>
-<td>2080Ti * 8</td>
+<td></td>
+<td></td>
 <td>28</td>
+<td>2080Ti * 8</td>
 <td>退役</td>
 </tr>
 <tr>
 <td>wmc-slave-g14</td>
-<td>2080Ti * 10</td>
+<td></td>
+<td></td>
 <td>32</td>
+<td>2080Ti * 10</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g15</td>
-<td>2080Ti * 10</td>
+<td></td>
+<td></td>
 <td>32</td>
+<td>2080Ti * 10</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g16</td>
-<td>Amax 3090 * 7</td>
-<td>48</td>
+<td>SYS-4029GP-TRT2</td>
+<td>AMAX</td>
+<td>Xeon Gold 5220R 48核</td>
+<td>3090 * 7</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g17</td>
-<td>Amax 3090 * 6</td>
-<td>48</td>
+<td>SYS-4029GP-TRT2</td>
+<td>AMAX</td>
+<td>Xeon Gold 5220R 48核</td>
+<td>3090 * 6</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g18</td>
-<td>思腾合力 A6000 * 10</td>
+<td></td>
+<td>思腾合力</td>
 <td>48</td>
+<td>A6000 * 10</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g19</td>
-<td>思腾合力 A6000 * 10</td>
+<td></td>
+<td>思腾合力</td>
 <td>48</td>
+<td>A6000 * 10</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g20</td>
-<td>思腾合力 A6000 * 10</td>
+<td></td>
+<td>思腾合力</td>
 <td>48</td>
+<td>A6000 * 10</td>
 <td>计算</td>
 </tr>
 <tr>
 <td>wmc-argon</td>
+<td></td>
+<td></td>
 <td>存储服务器</td>
 <td></td>
-<td>存储</td>
+<td></td>
 </tr>
 <tr>
 <td>wmc-helium</td>
+<td></td>
+<td></td>
 <td>存储服务器</td>
 <td></td>
-<td>存储</td>
+<td></td>
 </tr>
 <tr>
 <td>wmc-krypton</td>
-<td>思腾合力存储服务器</td>
 <td></td>
-<td>存储</td>
+<td>思腾合力</td>
+<td>存储服务器</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table></section>
@@ -340,17 +380,17 @@
 <tr>
 <td>wmc-slave-g6</td>
 <td>Ubuntu 20.04.6 LTS</td>
-<td></td>
+<td>535.183.01</td>
 </tr>
 <tr>
 <td>wmc-slave-g7</td>
 <td>Ubuntu 18.04.4 LTS</td>
-<td></td>
+<td>495.44</td>
 </tr>
 <tr>
 <td>wmc-slave-g8</td>
 <td>Ubuntu 20.04.6 LTS</td>
-<td></td>
+<td>535.230.02</td>
 </tr>
 <tr>
 <td>wmc-slave-g9</td>
@@ -360,7 +400,7 @@
 <tr>
 <td>wmc-slave-g10</td>
 <td>Ubuntu 20.04.6 LTS</td>
-<td>535.230.02</td>
+<td>570.169</td>
 </tr>
 <tr>
 <td>wmc-slave-g11</td>
@@ -390,12 +430,12 @@
 <tr>
 <td>wmc-slave-g16</td>
 <td>Ubuntu 18.04.5 LTS</td>
-<td></td>
+<td>550.54.14</td>
 </tr>
 <tr>
 <td>wmc-slave-g17</td>
 <td>Ubuntu 18.04.6 LTS</td>
-<td></td>
+<td>550.54.14</td>
 </tr>
 <tr>
 <td>wmc-slave-g18</td>
@@ -429,18 +469,57 @@
 </tr>
 </tbody>
 </table></section>
-</section>
 <section id="id7">
-<h2>登录集群<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<h3>计算资源分区<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>以下是计算资源的分区情况，在申请调试节点和编写任务脚本时需要指定目标分区。如果是 GPU 分区，默认会分配对应物理节点的 CPU 资源，例如当分配的节点为 wmc-slave-g8 时，会默认分配 wmc-slave-g8 节点的 CPU 资源。目前 wmc-slave-g[18-20] 的 CPU 不参与分区，在申请这些节点的 GPU 任务时默认分配。</p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>PARTITION</th>
+<th>NODELIST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cpu3</td>
+<td>wmc-slave-g[7-12]</td>
+</tr>
+<tr>
+<td>cpu4</td>
+<td>wmc-slave-g[14-15]</td>
+</tr>
+<tr>
+<td>cpu5</td>
+<td>wmc-slave-g[16-17]</td>
+</tr>
+<tr>
+<td>gpu3</td>
+<td>wmc-slave-g[8-12,14-15]</td>
+</tr>
+<tr>
+<td>gpu4</td>
+<td>wmc-slave-g[16-17]</td>
+</tr>
+<tr>
+<td>gpu5</td>
+<td>wmc-slave-g[18-20]</td>
+</tr>
+</tbody>
+</table></section>
+</section>
 <section id="id8">
-<h3>集群账户<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<h2>登录集群<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<section id="id9">
+<h3>集群账户<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>需要使用集群的老师和同学请联系管理员开通账户。每个集群用户使用独立的 Linux 账户登录和提交任务。为保证服务器安全，普通用户不提供 root 权限。</p></li>
 <li><p>默认登录节点：wmc-slave-g6（用于 SSH 连接）</p></li>
 </ul>
 </section>
-<section id="id9">
-<h3>新账户首次登录<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<section id="id10">
+<h3>新账户首次登录<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>首次登录时需要修改初始密码（注意输入一遍初始密码两遍新密码）：</p></li>
 </ul>
@@ -475,10 +554,10 @@ Retype<span class="w"> </span>new<span class="w"> </span>password:<span class="w
 </ul>
 </section>
 </section>
-<section id="id10">
-<h2>查看集群/节点状态<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
 <section id="id11">
-<h3>查看集群状态<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<h2>查看集群/节点状态<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<section id="id12">
+<h3>查看集群状态<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>在登陆节点上，使用 Slurm 提供的命令可以查看集群的各项状态。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sinfo</span></code> 命令可以看到哪些分区/计算节点是空闲的（idle）、分配了一部分资源（mix）或者完全占满了（alloc），输出示例如下：</p></li>
@@ -507,8 +586,8 @@ sinfo<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%2
 </pre></div>
 </div>
 </section>
-<section id="id12">
-<h3>查看节点状态<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<section id="id13">
+<h3>查看节点状态<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">scontrol</span></code> 命令则可展示更详细的信息。<code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">node</span> <span class="pre">具体节点</span></code> 查询节点信息、<code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">partition</span></code> 查询分区信息。</p></li>
 <li><p>例如 <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">node</span> <span class="pre">wmc-slave-g20</span></code>，得到输出如下：</p></li>
@@ -541,19 +620,19 @@ sinfo<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%2
 </section>
 <section id="debug">
 <h2>调试节点申请&amp;远程 debug<a class="headerlink" href="#debug" title="Link to this heading">¶</a></h2>
-<section id="id13">
-<h3>计算资源申请&amp;使用<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<section id="id14">
+<h3>计算资源申请&amp;使用<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>用户需要通过 <code class="docutils literal notranslate"><span class="pre">salloc</span></code> 命令申请资源后，使用 <code class="docutils literal notranslate"><span class="pre">srun</span></code> 运行调试任务。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">salloc</span></code> 命令示例如下：</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 使用 Slurm 分配交互式计算资源：</span>
 <span class="c1">#   --nodelist=wmc-slave-g12  # [可选] 强制指定节点名称，若省略则由系统自动分配</span>
-<span class="c1">#   -p gpu3                   # 提交到 gpu3 分区（通常为 GPU 节点专用队列）</span>
+<span class="c1">#   -p gpu3                   # 提交到 gpu3 分区（也可选择 cpu 分区）</span>
 <span class="c1">#   -N 1                      # 分配 1 个计算节点</span>
-<span class="c1">#   -c 4                      # 每任务占用 4 个 CPU 核心</span>
+<span class="c1">#   -c 4                      # 分配 4 个 CPU 核心</span>
 <span class="c1">#   --mem 30G                 # 分配 30GB 内存</span>
-<span class="c1">#   --gres gpu:1              # 分配 1 块目标 GPU</span>
+<span class="c1">#   --gres gpu:1              # [可选] 分配 1 块目标 GPU，纯 CPU 任务可不填写</span>
 salloc<span class="w"> </span>--nodelist<span class="o">=</span>wmc-slave-g12<span class="w"> </span>-p<span class="w"> </span>gpu3<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span>--mem<span class="w"> </span>30G<span class="w"> </span>--gres<span class="w"> </span>gpu:1
 </pre></div>
 </div>
@@ -609,8 +688,8 @@ python<span class="w"> </span>debug.py
 </ul>
 </section>
 </section>
-<section id="id14">
-<h2>环境搭建<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<section id="id15">
+<h2>环境搭建<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h2>
 <section id="python">
 <h3>python 环境管理<a class="headerlink" href="#python" title="Link to this heading">¶</a></h3>
 <ul class="simple">
@@ -640,8 +719,8 @@ pip<span class="w"> </span>config<span class="w"> </span><span class="nb">set</s
 </section>
 <section id="cuda">
 <h2>CUDA 版本问题<a class="headerlink" href="#cuda" title="Link to this heading">¶</a></h2>
-<section id="id15">
-<h3>查看当前版本<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<section id="id16">
+<h3>查看当前版本<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>可以使用以下命令查看版本，如果驱动支持 CUDA 版本过低，请联系管理员更新 GPU 节点驱动。</p></li>
 </ul>
@@ -655,8 +734,8 @@ nvcc<span class="w"> </span>--version
 <li><p>某些节点运行 <code class="docutils literal notranslate"><span class="pre">nvcc</span> <span class="pre">--verison</span></code> 会出现 <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">'nvcc'</span> <span class="pre">not</span> <span class="pre">found</span></code> 的情况，可以尝试手动指定CUDA版本，具体操作见下一小节。</p></li>
 </ul>
 </section>
-<section id="id16">
-<h3>指定/更改使用的 CUDA 版本<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h3>
+<section id="id17">
+<h3>指定/更改使用的 CUDA 版本<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>集群提供多个 CUDA 版本，存放在 <code class="docutils literal notranslate"><span class="pre">/app/cuda</span></code> 路径下，用户可以查看并选择合适的版本。</p></li>
 <li><p>用户可以通过修改环境变量指定 CUDA 版本：</p></li>
@@ -676,8 +755,8 @@ nvcc<span class="w"> </span>--version<span class="w">       </span><span class="
 </ul>
 </section>
 </section>
-<section id="id17">
-<h2>计算任务管理<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h2>
+<section id="id18">
+<h2>计算任务管理<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
 <blockquote>
 <div><p>本章仅介绍基础的任务脚本编写、提交、监控和取消，更多详细内容以及 Q&amp;A 参见<a class="reference internal" href="job_scripts.html"><span class="doc">集群任务脚本</span></a>和<a class="reference internal" href="FAQs.html"><span class="doc">常见问题</span></a>。</p>
 </div></blockquote>
@@ -846,8 +925,8 @@ sacct<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;<span class=
 </pre></div>
 </div>
 </section>
-<section id="id18">
-<h3>取消任务<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<section id="id19">
+<h3>取消任务<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>使用 <code class="docutils literal notranslate"><span class="pre">scancel</span></code> 取消正在等待或者执行中的任务。任务将会从任务队列中消失。</p></li>
 </ul>
@@ -856,8 +935,8 @@ sacct<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;<span class=
 </div>
 </section>
 </section>
-<section id="id19">
-<h2>文件传输&amp;管理<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+<section id="id20">
+<h2>文件传输&amp;管理<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
 <blockquote>
 <div><p>VS Code 支持 Windows 图形化界面的文件拖曳操作，但不显示传输速度和进度等相关信息，因此我们在这里提供一些其他的文件传输&amp;管理工具。</p>
 </div></blockquote>
@@ -882,10 +961,21 @@ scp<span class="w"> </span>username@remote_host:/remote/path/file.txt<span class
 </ul>
 </section>
 </section>
-<section id="id20">
-<h2>更多<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
 <section id="id21">
-<h3>导航<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
+<h2>常用命令<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 申请调试节点</span>
+salloc<span class="w"> </span>--nodelist<span class="o">=</span>&lt;NODE_NAME&gt;<span class="w"> </span>-p<span class="w"> </span>&lt;PARTITION&gt;<span class="w"> </span>-N<span class="w"> </span>&lt;NODE_COUNT&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;CPU_PER_NODE&gt;<span class="w"> </span>--mem<span class="w"> </span>&lt;MEMORY_SIZE&gt;<span class="w"> </span>--gres<span class="w"> </span>gpu:&lt;GPU_COUNT&gt;
+<span class="c1"># 查看任务信息</span>
+squeue<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;%.10i %.9P %.50j %.14u %.12T %.14M %.18R %.6C %.14b %.12m&quot;</span>
+<span class="c1"># 取消任务</span>
+scancel<span class="w"> </span>&lt;JOB_ID&gt;
+</pre></div>
+</div>
+</section>
+<section id="id22">
+<h2>更多<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h2>
+<section id="id23">
+<h3>导航<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="job_scripts.html"><span class="doc">集群任务脚本</span></a></p></li>
 <li><p><a class="reference internal" href="FAQs.html"><span class="doc">常见问题</span></a></p></li>
