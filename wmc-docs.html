@@ -216,7 +216,6 @@
 <th>厂商</th>
 <th>CPU 配置</th>
 <th>GPU 配置</th>
-<th>负责功能</th>
 </tr>
 </thead>
 <tbody>
@@ -226,7 +225,6 @@
 <td>AMAX</td>
 <td>Xeon Gold 5120 28核</td>
 <td>1080Ti * 8</td>
-<td>SLURM 控制/登录</td>
 </tr>
 <tr>
 <td>wmc-slave-g7</td>
@@ -234,7 +232,6 @@
 <td>AMAX</td>
 <td>Xeon Gold 5120 28核</td>
 <td>1080Ti * 8</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g8</td>
@@ -242,7 +239,6 @@
 <td>思腾合力</td>
 <td>28</td>
 <td>2080Ti * 8</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g9</td>
@@ -250,7 +246,6 @@
 <td>思腾合力</td>
 <td>28</td>
 <td>2080Ti * 8</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g10</td>
@@ -258,7 +253,6 @@
 <td></td>
 <td>Xeon Gold 5120 28核</td>
 <td>2080Ti * 8</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g11</td>
@@ -266,7 +260,6 @@
 <td></td>
 <td>28</td>
 <td>2080Ti * 8</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g12</td>
@@ -274,15 +267,13 @@
 <td></td>
 <td>28</td>
 <td>2080Ti * 8</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g13</td>
 <td></td>
 <td></td>
-<td>28</td>
+<td>28核</td>
 <td>2080Ti * 8</td>
-<td>退役</td>
 </tr>
 <tr>
 <td>wmc-slave-g14</td>
@@ -290,7 +281,6 @@
 <td></td>
 <td>32</td>
 <td>2080Ti * 10</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g15</td>
@@ -298,7 +288,6 @@
 <td></td>
 <td>32</td>
 <td>2080Ti * 10</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g16</td>
@@ -306,7 +295,6 @@
 <td>AMAX</td>
 <td>Xeon Gold 5220R 48核</td>
 <td>3090 * 7</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g17</td>
@@ -314,7 +302,6 @@
 <td>AMAX</td>
 <td>Xeon Gold 5220R 48核</td>
 <td>3090 * 6</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g18</td>
@@ -322,7 +309,6 @@
 <td>思腾合力</td>
 <td>48</td>
 <td>A6000 * 10</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g19</td>
@@ -330,7 +316,6 @@
 <td>思腾合力</td>
 <td>48</td>
 <td>A6000 * 10</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g20</td>
@@ -338,13 +323,11 @@
 <td>思腾合力</td>
 <td>48</td>
 <td>A6000 * 10</td>
-<td>计算</td>
 </tr>
 <tr>
 <td>wmc-argon</td>
 <td></td>
 <td></td>
-<td>存储服务器</td>
 <td></td>
 <td></td>
 </tr>
@@ -352,7 +335,6 @@
 <td>wmc-helium</td>
 <td></td>
 <td></td>
-<td>存储服务器</td>
 <td></td>
 <td></td>
 </tr>
@@ -360,7 +342,6 @@
 <td>wmc-krypton</td>
 <td></td>
 <td>思腾合力</td>
-<td>存储服务器</td>
 <td></td>
 <td></td>
 </tr>
@@ -374,6 +355,7 @@
 <th>节点名</th>
 <th>操作系统</th>
 <th>GPU 驱动版本</th>
+<th>负责功能</th>
 </tr>
 </thead>
 <tbody>
@@ -381,91 +363,109 @@
 <td>wmc-slave-g6</td>
 <td>Ubuntu 20.04.6 LTS</td>
 <td>535.183.01</td>
+<td>SLURM 控制/登录</td>
 </tr>
 <tr>
 <td>wmc-slave-g7</td>
 <td>Ubuntu 18.04.4 LTS</td>
 <td>495.44</td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g8</td>
 <td>Ubuntu 20.04.6 LTS</td>
 <td>535.230.02</td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g9</td>
 <td>Ubuntu 20.04.6 LTS</td>
 <td>535.230.02</td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g10</td>
 <td>Ubuntu 20.04.6 LTS</td>
 <td>570.169</td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g11</td>
 <td>Ubuntu 18.04.4 LTS</td>
 <td></td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g12</td>
 <td>Ubuntu 18.04.4 LTS</td>
 <td></td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g13</td>
 <td></td>
 <td></td>
+<td>退役</td>
 </tr>
 <tr>
 <td>wmc-slave-g14</td>
 <td>Ubuntu 18.04.4 LTS</td>
 <td></td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g15</td>
 <td>Ubuntu 18.04.4 LTS</td>
 <td></td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g16</td>
 <td>Ubuntu 18.04.5 LTS</td>
 <td>550.54.14</td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g17</td>
 <td>Ubuntu 18.04.6 LTS</td>
 <td>550.54.14</td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g18</td>
 <td>Ubuntu 18.04.6 LTS</td>
 <td></td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g19</td>
 <td>Ubuntu 20.04.6 LTS</td>
 <td></td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-slave-g20</td>
 <td>Ubuntu 18.04.6 LTS</td>
 <td></td>
+<td>计算</td>
 </tr>
 <tr>
 <td>wmc-argon</td>
 <td>Debian 10 (buster)</td>
 <td></td>
+<td>存储</td>
 </tr>
 <tr>
 <td>wmc-helium</td>
 <td>Ubuntu 20.04.2 LTS</td>
 <td></td>
+<td>存储</td>
 </tr>
 <tr>
 <td>wmc-krypton</td>
 <td>Ubuntu 20.04.2 LTS</td>
 <td></td>
+<td>存储</td>
 </tr>
 </tbody>
 </table></section>

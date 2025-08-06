@@ -23,49 +23,49 @@
 
 ### 节点硬件配置
 
-| 节点名            | 型号              | 厂商    | CPU 配置            | GPU 配置    | 负责功能         |
-|-------------------|------------------|---------|---------------------|------------|-----------------|
-| wmc-slave-g6      | SYS-4029GP-TRT   |   AMAX  | Xeon Gold 5120 28核 | 1080Ti * 8 | SLURM 控制/登录  |
-| wmc-slave-g7      | SYS-4029GP-TRT   |   AMAX  | Xeon Gold 5120 28核 | 1080Ti * 8 | 计算             |
-| wmc-slave-g8      |                  | 思腾合力 |   28    | 2080Ti * 8 | 计算                 |
-| wmc-slave-g9      |                  | 思腾合力 |   28    |  2080Ti * 8 | 计算                 |
-| wmc-slave-g10     | SYS-4029GP-TRT   |         | Xeon Gold 5120 28核 | 2080Ti * 8 | 计算             |
-| wmc-slave-g11     | | |   28    | 2080Ti * 8 | 计算                 |
-| wmc-slave-g12     | | |   28    | 2080Ti * 8 | 计算                 |
-| wmc-slave-g13     | | |   28    | 2080Ti * 8 | 退役                 |
-| wmc-slave-g14     | | |   32    | 2080Ti * 10| 计算                 |
-| wmc-slave-g15     | | |   32    | 2080Ti * 10| 计算                 |
-| wmc-slave-g16     | SYS-4029GP-TRT2  |     AMAX | Xeon Gold 5220R 48核 | 3090 * 7 | 计算                 |
-| wmc-slave-g17     | SYS-4029GP-TRT2  |     AMAX | Xeon Gold 5220R 48核 | 3090 * 6 | 计算                 |
-| wmc-slave-g18     | | 思腾合力 |   48    | A6000 * 10 | 计算                 |
-| wmc-slave-g19     | | 思腾合力 |   48    | A6000 * 10 | 计算                 |
-| wmc-slave-g20     | | 思腾合力 |   48    | A6000 * 10 | 计算                 |
-| wmc-argon         | | | 存储服务器                       |         | | 存储                 |
-| wmc-helium        | | | 存储服务器                       |         | | 存储                 |
-| wmc-krypton       | | 思腾合力 |存储服务器                |         | | 存储                 |
+| 节点名            | 型号              | 厂商    | CPU 配置            | GPU 配置    |
+|-------------------|------------------|---------|---------------------|------------|
+| wmc-slave-g6      | SYS-4029GP-TRT   |   AMAX  | Xeon Gold 5120 28核 | 1080Ti * 8 |
+| wmc-slave-g7      | SYS-4029GP-TRT   |   AMAX  | Xeon Gold 5120 28核 | 1080Ti * 8 |
+| wmc-slave-g8      |                  | 思腾合力 |   28    | 2080Ti * 8 |
+| wmc-slave-g9      |                  | 思腾合力 |   28    |  2080Ti * 8 |
+| wmc-slave-g10     | SYS-4029GP-TRT   |         | Xeon Gold 5120 28核 | 2080Ti * 8 |
+| wmc-slave-g11     | | |   28    | 2080Ti * 8 |
+| wmc-slave-g12     | | |   28    | 2080Ti * 8 |
+| wmc-slave-g13     | | |   28核    | 2080Ti * 8 |
+| wmc-slave-g14     | | |   32    | 2080Ti * 10|
+| wmc-slave-g15     | | |   32    | 2080Ti * 10|
+| wmc-slave-g16     | SYS-4029GP-TRT2  |     AMAX | Xeon Gold 5220R 48核 | 3090 * 7 |
+| wmc-slave-g17     | SYS-4029GP-TRT2  |     AMAX | Xeon Gold 5220R 48核 | 3090 * 6 |
+| wmc-slave-g18     | | 思腾合力 |   48    | A6000 * 10 |
+| wmc-slave-g19     | | 思腾合力 |   48    | A6000 * 10 |
+| wmc-slave-g20     | | 思腾合力 |   48    | A6000 * 10 |
+| wmc-argon         | | |                        |         | |
+| wmc-helium        | | |                        |         | |
+| wmc-krypton       | | 思腾合力 |                |         | |
 
 ### 节点软件配置
 
-| 节点名               | 操作系统            | GPU 驱动版本   |
-|----------------------|--------------------|---------------|
-| wmc-slave-g6         | Ubuntu 20.04.6 LTS | 535.183.01    |
-| wmc-slave-g7         | Ubuntu 18.04.4 LTS | 495.44        |
-| wmc-slave-g8         | Ubuntu 20.04.6 LTS | 535.230.02    |
-| wmc-slave-g9         | Ubuntu 20.04.6 LTS | 535.230.02    |
-| wmc-slave-g10        | Ubuntu 20.04.6 LTS | 570.169       |
-| wmc-slave-g11        | Ubuntu 18.04.4 LTS | |
-| wmc-slave-g12        | Ubuntu 18.04.4 LTS | |
-| wmc-slave-g13        |                    | |
-| wmc-slave-g14        | Ubuntu 18.04.4 LTS | |
-| wmc-slave-g15        | Ubuntu 18.04.4 LTS | |
-| wmc-slave-g16        | Ubuntu 18.04.5 LTS | 550.54.14     |
-| wmc-slave-g17        | Ubuntu 18.04.6 LTS | 550.54.14     |
-| wmc-slave-g18        | Ubuntu 18.04.6 LTS | |
-| wmc-slave-g19        | Ubuntu 20.04.6 LTS | |
-| wmc-slave-g20        | Ubuntu 18.04.6 LTS | |
-| wmc-argon            | Debian 10 (buster) | |
-| wmc-helium           | Ubuntu 20.04.2 LTS | |
-| wmc-krypton          | Ubuntu 20.04.2 LTS | |
+| 节点名               | 操作系统            | GPU 驱动版本   | 负责功能         |
+|----------------------|--------------------|---------------|-----------------|
+| wmc-slave-g6         | Ubuntu 20.04.6 LTS | 535.183.01    | SLURM 控制/登录  |
+| wmc-slave-g7         | Ubuntu 18.04.4 LTS | 495.44        | 计算             |
+| wmc-slave-g8         | Ubuntu 20.04.6 LTS | 535.230.02    | 计算             |
+| wmc-slave-g9         | Ubuntu 20.04.6 LTS | 535.230.02    | 计算             |
+| wmc-slave-g10        | Ubuntu 20.04.6 LTS | 570.169       | 计算             |
+| wmc-slave-g11        | Ubuntu 18.04.4 LTS |               | 计算             |
+| wmc-slave-g12        | Ubuntu 18.04.4 LTS |               | 计算             |
+| wmc-slave-g13        |                    |               | 退役             |
+| wmc-slave-g14        | Ubuntu 18.04.4 LTS |               | 计算             |
+| wmc-slave-g15        | Ubuntu 18.04.4 LTS |               | 计算             |
+| wmc-slave-g16        | Ubuntu 18.04.5 LTS | 550.54.14     | 计算             |
+| wmc-slave-g17        | Ubuntu 18.04.6 LTS | 550.54.14     | 计算             |
+| wmc-slave-g18        | Ubuntu 18.04.6 LTS |               | 计算             |
+| wmc-slave-g19        | Ubuntu 20.04.6 LTS |               | 计算             |
+| wmc-slave-g20        | Ubuntu 18.04.6 LTS |               | 计算             |
+| wmc-argon            | Debian 10 (buster) |               | 存储             |
+| wmc-helium           | Ubuntu 20.04.2 LTS |               | 存储             |
+| wmc-krypton          | Ubuntu 20.04.2 LTS |               | 存储             |
 
 ### 计算资源分区
 
