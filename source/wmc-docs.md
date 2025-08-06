@@ -23,49 +23,62 @@
 
 ### 节点硬件配置
 
-| 节点名               | 型号/配置                        | CPU数目  | 负责功能             |
-|----------------------|---------------------------------|---------|----------------------|
-| wmc-slave-g6         | AMAX SYS-4029GP-TRT 1080Ti * 8  |         | SLURM 控制/登录       |
-| wmc-slave-g7         | AMAX SYS-4029GP-TRT 1080Ti * 8  |   28    | 计算                 |
-| wmc-slave-g8         | 思腾合力 2080Ti * 8              |   28    | 计算                 |
-| wmc-slave-g9         | 思腾合力 2080Ti * 8              |   28    | 计算                 |
-| wmc-slave-g10        | 2080Ti * 8                      |   28    | 计算                 |
-| wmc-slave-g11        | 2080Ti * 8                      |   28    | 计算                 |
-| wmc-slave-g12        | 2080Ti * 8                      |   28    | 计算                 |
-| wmc-slave-g13        | 2080Ti * 8                      |   28    | 退役                 |
-| wmc-slave-g14        | 2080Ti * 10                     |    32   | 计算                 |
-| wmc-slave-g15        | 2080Ti * 10                     |    32   | 计算                 |
-| wmc-slave-g16        | Amax 3090 * 7                   |   48    | 计算                 |
-| wmc-slave-g17        | Amax 3090 * 6                   |   48    | 计算                 |
-| wmc-slave-g18        | 思腾合力 A6000 * 10              |   48    | 计算                 |
-| wmc-slave-g19        | 思腾合力 A6000 * 10              |   48    | 计算                 |
-| wmc-slave-g20        | 思腾合力 A6000 * 10              |   48    | 计算                 |
-| wmc-argon            | 存储服务器                       |         | 存储                 |
-| wmc-helium           | 存储服务器                       |         | 存储                 |
-| wmc-krypton          | 思腾合力存储服务器                |         | 存储                 |
+| 节点名            | 型号              | 厂商    | CPU 配置            | GPU 配置    | 负责功能         |
+|-------------------|------------------|---------|---------------------|------------|-----------------|
+| wmc-slave-g6      | SYS-4029GP-TRT   |   AMAX  | Xeon Gold 5120 28核 | 1080Ti * 8 | SLURM 控制/登录  |
+| wmc-slave-g7      | SYS-4029GP-TRT   |   AMAX  | Xeon Gold 5120 28核 | 1080Ti * 8 | 计算             |
+| wmc-slave-g8      |                  | 思腾合力 |   28    | 2080Ti * 8 | 计算                 |
+| wmc-slave-g9      |                  | 思腾合力 |   28    |  2080Ti * 8 | 计算                 |
+| wmc-slave-g10     | SYS-4029GP-TRT   |         | Xeon Gold 5120 28核 | 2080Ti * 8 | 计算             |
+| wmc-slave-g11     | | |   28    | 2080Ti * 8 | 计算                 |
+| wmc-slave-g12     | | |   28    | 2080Ti * 8 | 计算                 |
+| wmc-slave-g13     | | |   28    | 2080Ti * 8 | 退役                 |
+| wmc-slave-g14     | | |   32    | 2080Ti * 10| 计算                 |
+| wmc-slave-g15     | | |   32    | 2080Ti * 10| 计算                 |
+| wmc-slave-g16     | SYS-4029GP-TRT2  |     AMAX | Xeon Gold 5220R 48核 | 3090 * 7 | 计算                 |
+| wmc-slave-g17     | SYS-4029GP-TRT2  |     AMAX | Xeon Gold 5220R 48核 | 3090 * 6 | 计算                 |
+| wmc-slave-g18     | | 思腾合力 |   48    | A6000 * 10 | 计算                 |
+| wmc-slave-g19     | | 思腾合力 |   48    | A6000 * 10 | 计算                 |
+| wmc-slave-g20     | | 思腾合力 |   48    | A6000 * 10 | 计算                 |
+| wmc-argon         | | | 存储服务器                       |         | | 存储                 |
+| wmc-helium        | | | 存储服务器                       |         | | 存储                 |
+| wmc-krypton       | | 思腾合力 |存储服务器                |         | | 存储                 |
 
 ### 节点软件配置
 
 | 节点名               | 操作系统            | GPU 驱动版本   |
 |----------------------|--------------------|---------------|
-| wmc-slave-g6         | Ubuntu 20.04.6 LTS | |
-| wmc-slave-g7         | Ubuntu 18.04.4 LTS | |
-| wmc-slave-g8         | Ubuntu 20.04.6 LTS | |
+| wmc-slave-g6         | Ubuntu 20.04.6 LTS | 535.183.01    |
+| wmc-slave-g7         | Ubuntu 18.04.4 LTS | 495.44        |
+| wmc-slave-g8         | Ubuntu 20.04.6 LTS | 535.230.02    |
 | wmc-slave-g9         | Ubuntu 20.04.6 LTS | 535.230.02    |
-| wmc-slave-g10        | Ubuntu 20.04.6 LTS | 535.230.02    |
+| wmc-slave-g10        | Ubuntu 20.04.6 LTS | 570.169       |
 | wmc-slave-g11        | Ubuntu 18.04.4 LTS | |
 | wmc-slave-g12        | Ubuntu 18.04.4 LTS | |
 | wmc-slave-g13        |                    | |
 | wmc-slave-g14        | Ubuntu 18.04.4 LTS | |
 | wmc-slave-g15        | Ubuntu 18.04.4 LTS | |
-| wmc-slave-g16        | Ubuntu 18.04.5 LTS | |
-| wmc-slave-g17        | Ubuntu 18.04.6 LTS | |
+| wmc-slave-g16        | Ubuntu 18.04.5 LTS | 550.54.14     |
+| wmc-slave-g17        | Ubuntu 18.04.6 LTS | 550.54.14     |
 | wmc-slave-g18        | Ubuntu 18.04.6 LTS | |
 | wmc-slave-g19        | Ubuntu 20.04.6 LTS | |
 | wmc-slave-g20        | Ubuntu 18.04.6 LTS | |
 | wmc-argon            | Debian 10 (buster) | |
 | wmc-helium           | Ubuntu 20.04.2 LTS | |
 | wmc-krypton          | Ubuntu 20.04.2 LTS | |
+
+### 计算资源分区
+
+- 以下是计算资源的分区情况，在申请调试节点和编写任务脚本时需要指定目标分区。如果是 GPU 分区，默认会分配对应物理节点的 CPU 资源，例如当分配的节点为 wmc-slave-g8 时，会默认分配 wmc-slave-g8 节点的 CPU 资源。目前 wmc-slave-g[18-20] 的 CPU 不参与分区，在申请这些节点的 GPU 任务时默认分配。
+
+| PARTITION	| NODELIST                |
+|-----------|-------------------------|
+| cpu3	    | wmc-slave-g[7-12]       |
+| cpu4	    | wmc-slave-g[14-15]      |
+| cpu5	    | wmc-slave-g[16-17]      |
+| gpu3	    | wmc-slave-g[8-12,14-15] |
+| gpu4	    | wmc-slave-g[16-17]      |
+| gpu5	    | wmc-slave-g[18-20]      |
 
 ## 登录集群
 
@@ -172,11 +185,11 @@ NodeName=wmc-slave-g20 Arch=x86_64 CoresPerSocket=24
 ```bash
 # 使用 Slurm 分配交互式计算资源：
 #   --nodelist=wmc-slave-g12  # [可选] 强制指定节点名称，若省略则由系统自动分配
-#   -p gpu3                   # 提交到 gpu3 分区（通常为 GPU 节点专用队列）
+#   -p gpu3                   # 提交到 gpu3 分区（也可选择 cpu 分区）
 #   -N 1                      # 分配 1 个计算节点
-#   -c 4                      # 每任务占用 4 个 CPU 核心
+#   -c 4                      # 分配 4 个 CPU 核心
 #   --mem 30G                 # 分配 30GB 内存
-#   --gres gpu:1              # 分配 1 块目标 GPU
+#   --gres gpu:1              # [可选] 分配 1 块目标 GPU，纯 CPU 任务可不填写
 salloc --nodelist=wmc-slave-g12 -p gpu3 -N 1 -c 4 --mem 30G --gres gpu:1
 ```
 - 获得计算资源分配后，<strong style="color: red;">务必</strong>使用 `srun [选项] 可执行程序 [程序参数]` 进行交互式作业调试，否则<strong style="color: red;">任务会运行在登录节点上，可能导致集群崩溃</strong>。
@@ -396,6 +409,17 @@ scp username@remote_host:/remote/path/file.txt /local/path/
 
 - Linux 和 OpenSSH 客户端还支持 SFTP（SSH File Transfer Protocol）协议，提供多功能文件管理，支持断点续传，但比 SCP 稍慢一些，有需要的用户可以自行查阅相关使用方法。
 - 如需图形化操作，推荐使用 ​WinSCP​（同时支持 SCP 和 SFTP ）。
+
+## 常用命令
+
+```bash
+# 申请调试节点
+salloc --nodelist=<NODE_NAME> -p <PARTITION> -N <NODE_COUNT> -c <CPU_PER_NODE> --mem <MEMORY_SIZE> --gres gpu:<GPU_COUNT>
+# 查看任务信息
+squeue -o "%.10i %.9P %.50j %.14u %.12T %.14M %.18R %.6C %.14b %.12m"
+# 取消任务
+scancel <JOB_ID>
+```
 
 ## 更多
 
