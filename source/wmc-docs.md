@@ -60,7 +60,7 @@
 | wmc-slave-g15        | Ubuntu 18.04.4 LTS |               | 计算             |
 | wmc-slave-g16        | Ubuntu 20.04.6 LTS | 570.133.20    | 计算             |
 | wmc-slave-g17        | Ubuntu 20.04.6 LTS | 570.133.20    | 计算             |
-| wmc-slave-g18        | Ubuntu 20.04.6 LTS | 535.230.02    | 计算             |
+| wmc-slave-g18        | Ubuntu 20.04.6 LTS | 570.181       | 计算             |
 | wmc-slave-g19        | Ubuntu 20.04.6 LTS | 535.230.02    | 计算             |
 | wmc-slave-g20        | Ubuntu 20.04.6 LTS | 570.133.07    | 计算             |
 | wmc-argon            | Debian 10 (buster) |               | 存储             |
