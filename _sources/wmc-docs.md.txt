@@ -54,15 +54,15 @@
 | wmc-slave-g9         | Ubuntu 20.04.6 LTS | 535.230.02    | 计算             |
 | wmc-slave-g10        | Ubuntu 20.04.6 LTS | 570.169       | 计算             |
 | wmc-slave-g11        | Ubuntu 18.04.4 LTS |               | 计算             |
-| wmc-slave-g12        | Ubuntu 18.04.4 LTS |               | 计算             |
+| wmc-slave-g12        | Ubuntu 18.04.4 LTS | 535.146.02    | 计算             |
 | wmc-slave-g13        |                    |               | 退役             |
 | wmc-slave-g14        | Ubuntu 18.04.4 LTS |               | 计算             |
 | wmc-slave-g15        | Ubuntu 18.04.4 LTS |               | 计算             |
-| wmc-slave-g16        | Ubuntu 18.04.5 LTS | 550.54.14     | 计算             |
-| wmc-slave-g17        | Ubuntu 18.04.6 LTS | 550.54.14     | 计算             |
-| wmc-slave-g18        | Ubuntu 18.04.6 LTS |               | 计算             |
+| wmc-slave-g16        | Ubuntu 20.04.6 LTS | 570.133.20    | 计算             |
+| wmc-slave-g17        | Ubuntu 20.04.6 LTS | 570.133.20    | 计算             |
+| wmc-slave-g18        | Ubuntu 20.04.6 LTS | 535.230.02    | 计算             |
 | wmc-slave-g19        | Ubuntu 20.04.6 LTS | 535.230.02    | 计算             |
-| wmc-slave-g20        | Ubuntu 18.04.6 LTS |               | 计算             |
+| wmc-slave-g20        | Ubuntu 20.04.6 LTS | 570.133.07    | 计算             |
 | wmc-argon            | Debian 10 (buster) |               | 存储             |
 | wmc-helium           | Ubuntu 20.04.2 LTS |               | 存储             |
 | wmc-krypton          | Ubuntu 20.04.2 LTS |               | 存储             |
