@@ -29,12 +29,12 @@
 | wmc-slave-g7      | SYS-4029GP-TRT   |   AMAX  | Xeon Gold 5120 28核  | 1080Ti * 8 |
 | wmc-slave-g8      | SYS-4029GP-TRT   | 思腾合力 | Xeon Gold 5120 28核  | 2080Ti * 8 |
 | wmc-slave-g9      |                  | 思腾合力 |   28                 | 2080Ti * 8 |
-| wmc-slave-g10     | SYS-4029GP-TRT   |         | Xeon Gold 5120 28核  | 2080Ti * 8 |
-| wmc-slave-g11     | SYS-4029GP-TRT   |         | Xeon Gold 5120 28核  | 2080Ti * 8 |
-| wmc-slave-g12     | SYS-4029GP-TRT   |         | Xeon Gold 5120 28核  | 2080Ti * 8 |
-| wmc-slave-g13     |                  |         |   28核               | 2080Ti * 8 |
-| wmc-slave-g14     | SYS-4029GP-TRT2  |         | Xeon Gold 5218 32核  | 2080Ti * 10|
-| wmc-slave-g15     | SYS-4029GP-TRT2  |         | Xeon Gold 5218 32核  | 2080Ti * 10|
+| wmc-slave-g10     | SYS-4029GP-TRT   | 容天    | Xeon Gold 5120 28核  | 2080Ti * 8 |
+| wmc-slave-g11     | SYS-4029GP-TRT   | 容天    | Xeon Gold 5120 28核  | 2080Ti * 8 |
+| wmc-slave-g12     | SYS-4029GP-TRT   | 容天    | Xeon Gold 5120 28核  | 2080Ti * 8 |
+| wmc-slave-g13     |                  | 容天    |   28核               | 2080Ti * 8 |
+| wmc-slave-g14     | SYS-4029GP-TRT2  |   AMAX  | Xeon Gold 5218 32核  | 2080Ti * 10|
+| wmc-slave-g15     | SYS-4029GP-TRT2  |   AMAX  | Xeon Gold 5218 32核  | 2080Ti * 10|
 | wmc-slave-g16     | SYS-4029GP-TRT2  |   AMAX  | Xeon Gold 5220R 48核 | 3090 * 7   |
 | wmc-slave-g17     | SYS-4029GP-TRT2  |   AMAX  | Xeon Gold 5220R 48核 | 3090 * 6   |
 | wmc-slave-g18     | SYS-4029GP-TRT2  | 思腾合力 | Xeon Gold 5220R 48核 | A6000 * 10 |
@@ -53,11 +53,11 @@
 | wmc-slave-g8         | Ubuntu 20.04.6 LTS | 535.230.02    | 计算             |
 | wmc-slave-g9         | Ubuntu 20.04.6 LTS | 535.230.02    | 计算             |
 | wmc-slave-g10        | Ubuntu 20.04.6 LTS | 570.169       | 计算             |
-| wmc-slave-g11        | Ubuntu 18.04.4 LTS |               | 计算             |
-| wmc-slave-g12        | Ubuntu 18.04.4 LTS | 535.146.02    | 计算             |
+| wmc-slave-g11        | Ubuntu 20.04.6 LTS |               | 计算             |
+| wmc-slave-g12        | Ubuntu 20.04.6 LTS | 535.146.02    | 计算             |
 | wmc-slave-g13        |                    |               | 退役             |
-| wmc-slave-g14        | Ubuntu 18.04.4 LTS |               | 计算             |
-| wmc-slave-g15        | Ubuntu 18.04.4 LTS |               | 计算             |
+| wmc-slave-g14        | Ubuntu 20.04.6 LTS |               | 计算             |
+| wmc-slave-g15        | Ubuntu 20.04.6 LTS |               | 计算             |
 | wmc-slave-g16        | Ubuntu 20.04.6 LTS | 570.133.20    | 计算             |
 | wmc-slave-g17        | Ubuntu 20.04.6 LTS | 570.133.20    | 计算             |
 | wmc-slave-g18        | Ubuntu 20.04.6 LTS | 570.181       | 计算             |
