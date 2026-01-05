@@ -35,8 +35,8 @@
 | wmc-slave-g13     |                  | 容天    |   28核               | 2080Ti * 8 |
 | wmc-slave-g14     | SYS-4029GP-TRT2  |   AMAX  | Xeon Gold 5218 32核  | 2080Ti * 10|
 | wmc-slave-g15     | SYS-4029GP-TRT2  |   AMAX  | Xeon Gold 5218 32核  | 2080Ti * 10|
-| wmc-slave-g16     | SYS-4029GP-TRT2  |   AMAX  | Xeon Gold 5220R 48核 | 3090 * 7   |
-| wmc-slave-g17     | SYS-4029GP-TRT2  |   AMAX  | Xeon Gold 5220R 48核 | 3090 * 6   |
+| wmc-slave-g16     | SYS-4029GP-TRT2  |   AMAX  | Xeon Gold 5220R 48核 | 3090 * 8   |
+| wmc-slave-g17     | SYS-4029GP-TRT2  |   AMAX  | Xeon Gold 5220R 48核 | 3090 * 8   |
 | wmc-slave-g18     | SYS-4029GP-TRT2  | 思腾合力 | Xeon Gold 5220R 48核 | A6000 * 10 |
 | wmc-slave-g19     | SYS-4029GP-TRT2  | 思腾合力 | Xeon Gold 5220R 48核 | A6000 * 10 |
 | wmc-slave-g20     | SYS-4029GP-TRT2  | 思腾合力 | Xeon Gold 5220R 48核 | A6000 * 10 |
